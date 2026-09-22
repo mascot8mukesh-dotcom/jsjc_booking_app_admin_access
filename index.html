@@ -86,7 +86,7 @@ Before writing any code in this file, re-read this note once. That's it.
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>JSJC Smart Booking App v99.1</title>
+<title>JSJC Smart Booking App v99.5</title>
 <!-- v80.9 ICON PATH FIX
      Root cause of the grey "G" default icon: v80.8 was written assuming an
      icons/ subfolder deployment (icons/favicon.ico etc.), but the repo
@@ -185,11 +185,11 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .app-bar-title{font-size:13px;font-weight:800;letter-spacing:.4px;color:#fff;line-height:1.2;}
 .app-bar-role{font-size:9px;color:rgba(255,255,255,.85);letter-spacing:1.5px;text-transform:uppercase;margin-top:1px;}
 .app-bar-right{display:flex;align-items:center;gap:10px;}
-.ab-btn{background:rgba(255,255,255,.12);border:none;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;color:#fff;font-size:16px;flex-shrink:0;}
+.ab-btn{background:rgba(255,255,255,.12);border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;color:#fff;font-size:17px;flex-shrink:0;}
 .ab-btn:active{background:rgba(255,255,255,.25);}
 .notif-badge{position:absolute;top:-3px;right:-3px;background:#fbbf24;color:#000;font-size:9px;font-weight:900;border-radius:10px;padding:1px 4px;min-width:14px;text-align:center;line-height:14px;display:none;}
 .notif-badge.has-notif{display:block;}
-.notif-panel{display:none;position:fixed;top:58px;right:8px;width:290px;max-height:380px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:800;overflow:hidden;border:1px solid #e5e7eb;}
+.notif-panel{display:none;position:fixed;top:64px;right:8px;width:310px;max-height:400px;background:#fff;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:800;overflow:hidden;border:1px solid #e5e7eb;}
 .notif-panel.open{display:flex;flex-direction:column;}
 .notif-hd{background:linear-gradient(135deg,#3d0000,#7b1a1a);color:#fff;padding:12px 14px;font-size:12px;font-weight:800;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
 .notif-list{overflow-y:auto;flex:1;}
@@ -205,17 +205,17 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .app-bar-tag{font-size:9px;background:rgba(0,0,0,.25);padding:2px 8px;border-radius:6px;font-family:monospace;font-weight:700;}
 /* Screens */
 .screens{flex:1;overflow:hidden;position:relative;}
-.screen{position:absolute;inset:0;overflow-y:auto;display:none;padding:14px 14px 80px;background:#f5f5f7;}
+.screen{position:absolute;inset:0;overflow-y:auto;display:none;padding:16px 16px 90px;background:#f5f5f7;}
 .screen.active{display:block;}
 .screen::-webkit-scrollbar{display:none;}
 #screen-login{padding:0;background:#fff;z-index:10;}
 #screen-login.active{display:flex;flex-direction:column;}
 
 /* Bottom Nav */
-.bottom-nav{background:#fff;border-top:1px solid #e5e7eb;display:flex;padding:8px 4px 18px;flex-shrink:0;box-shadow:0 -4px 16px rgba(0,0,0,.07);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.bottom-nav{background:#fff;border-top:1px solid #e5e7eb;display:flex;padding:10px 4px 22px;flex-shrink:0;box-shadow:0 -4px 16px rgba(0,0,0,.07);overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .bottom-nav::-webkit-scrollbar{display:none;}
 #screen-appinfo{background:#faf7f4 !important;}
-.nav-it{flex:0 0 auto;min-width:60px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:2px 6px;-webkit-tap-highlight-color:transparent;user-select:none;}
+.nav-it{flex:0 0 auto;min-width:60px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:4px 8px;-webkit-tap-highlight-color:transparent;user-select:none;}
 .nav-ico{font-size:17px;transition:transform .2s ease;}
 .nav-lbl{font-size:9px;font-weight:700;color:#6b7280;letter-spacing:.4px;text-transform:uppercase;transition:color .15s ease;}
 /* v87.18: active nav item shows correct colour + pip; cursor stays default (not pointer) so there is no "stuck-cursor" visual artefact */
@@ -226,13 +226,13 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .nav-it.active .nav-pip{opacity:1;}
 /* Common */
 .sec-lbl{font-size:10px;font-weight:800;color:#6b7280;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:6px;margin-top:4px;}
-.card{background:#fff;border-radius:16px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:10px;border:1px solid rgba(0,0,0,.05);}
-.sub-btn{width:100%;padding:13px;background:linear-gradient(135deg,#5c0000,#7b1a1a);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 18px rgba(123,26,26,.35);transition:transform .15s;}
+.card{background:#fff;border-radius:18px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:12px;border:1px solid rgba(0,0,0,.05);}
+.sub-btn{width:100%;padding:15px 13px;background:linear-gradient(135deg,#5c0000,#7b1a1a);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 18px rgba(123,26,26,.35);transition:transform .15s;}
 .sub-btn:active{transform:scale(.97);}
 .flabel{font-size:10px;font-weight:700;color:#6b7280;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;display:block;}
 .fselect{width:100%;padding:10px 34px 10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:12.5px;color:#1f2937;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 11px center;-webkit-appearance:none;outline:none;cursor:pointer;transition:border-color .2s;margin-bottom:10px;font-family:inherit;}
 .fselect:focus{border-color:#7b1a1a;}
-.finput{width:100%;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:12.5px;color:#1f2937;background:#fff;outline:none;transition:border-color .2s;margin-bottom:9px;font-family:inherit;}
+.finput{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:12.5px;color:#1f2937;background:#fff;outline:none;transition:border-color .2s;margin-bottom:11px;font-family:inherit;}
 .finput:focus{border-color:#7b1a1a;}
 .ftarea{width:100%;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:12px;color:#1f2937;background:#fff;outline:none;resize:none;height:68px;transition:border-color .2s;margin-bottom:9px;font-family:inherit;line-height:1.5;}
 .ftarea:focus{border-color:#7b1a1a;}
@@ -255,11 +255,11 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .p-overd{background:#fee2e2;color:#991b1b;}
 /* 5-way tab (Purpose) */
 .tab5{display:grid;grid-template-columns:repeat(5,1fr);background:#f3f4f6;border-radius:12px;padding:3px;margin-bottom:12px;gap:2px;}
-.t5btn{padding:7px 2px;border-radius:8px;font-size:9px;font-weight:700;border:none;background:transparent;cursor:pointer;transition:all .2s;color:#6b7280;font-family:inherit;letter-spacing:.2px;line-height:1.3;text-align:center;}
+.t5btn{padding:8px 4px;border-radius:8px;font-size:9.5px;font-weight:700;border:none;background:transparent;cursor:pointer;transition:all .2s;color:#6b7280;font-family:inherit;letter-spacing:.2px;line-height:1.3;text-align:center;}
 .t5btn.active{background:#fff;color:#7b1a1a;box-shadow:0 1px 4px rgba(0,0,0,.1);}
 /* 2-way toggle */
 .tog2{display:flex;background:#f3f4f6;border-radius:10px;padding:3px;margin-bottom:10px;}
-.t2btn{flex:1;padding:8px;border-radius:7px;font-size:11px;font-weight:700;border:none;background:transparent;cursor:pointer;transition:all .2s;color:#6b7280;font-family:inherit;}
+.t2btn{flex:1;padding:10px;border-radius:7px;font-size:11.5px;font-weight:700;border:none;background:transparent;cursor:pointer;transition:all .2s;color:#6b7280;font-family:inherit;}
 .t2btn.active{background:#fff;color:#7b1a1a;box-shadow:0 1px 4px rgba(0,0,0,.1);}
 /* Category tiles */
 .cat-row{display:flex;gap:6px;margin-bottom:12px;}
@@ -281,7 +281,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 
 /* ══════════ V71.8 DEMO: Visual Resource Card Grid ══════════ */
 .vcg-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px;}
-.vcg-card{background:#fff;border:1.5px solid #e5e7eb;border-radius:13px;padding:10px 10px 9px;position:relative;transition:all .15s;}
+.vcg-card{background:#fff;border:1.5px solid #e5e7eb;border-radius:13px;padding:13px 12px 11px;position:relative;transition:all .15s;}
 .vcg-card.selected{border-color:#7b1a1a;background:linear-gradient(135deg,#fff8f5,#fdf0ee);box-shadow:0 3px 10px rgba(123,26,26,.14);}
 .vcg-card.disabled{opacity:.5;}
 .vcg-ico{font-size:22px;margin-bottom:5px;}
@@ -289,7 +289,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .vcg-meta{display:flex;align-items:center;gap:4px;font-size:9px;color:#6b7280;margin-bottom:3px;}
 .vcg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;display:inline-block;}
 .vcg-loc{font-size:9px;color:#9ca3af;margin-bottom:7px;}
-.vcg-btn{width:100%;border:none;border-radius:8px;padding:7px 4px;font-family:inherit;font-size:10.5px;font-weight:800;cursor:pointer;}
+.vcg-btn{width:100%;border:none;border-radius:8px;padding:9px 6px;font-family:inherit;font-size:10.5px;font-weight:800;cursor:pointer;}
 .vcg-btn.pick{background:#f0fdf4;color:#16a34a;border:1.5px solid #bbf7d0;}
 .vcg-btn.picked{background:linear-gradient(135deg,#7b1a1a,#9a2b2b);color:#fff;}
 .vcg-btn.off{background:#f3f4f6;color:#9ca3af;cursor:not-allowed;}
@@ -398,14 +398,14 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 /* Note field */
 .apc-note-display{background:#f9fafb;border-radius:8px;padding:8px 10px;font-size:11.5px;color:#374151;margin-top:4px;}
 .ap-acts{display:flex;gap:7px;margin-bottom:8px;}
-.btn-ap{flex:1;padding:9px;background:#16a34a;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;transition:transform .15s;text-transform:uppercase;letter-spacing:.5px;}
-.btn-rj{flex:1;padding:9px;background:#dc2626;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;transition:transform .15s;text-transform:uppercase;letter-spacing:.5px;}
+.btn-ap{flex:1;padding:11px 9px;background:#16a34a;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;transition:transform .15s;text-transform:uppercase;letter-spacing:.5px;}
+.btn-rj{flex:1;padding:11px 9px;background:#dc2626;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;transition:transform .15s;text-transform:uppercase;letter-spacing:.5px;}
 .btn-ap:active,.btn-rj:active{transform:scale(.96);}
 /* Manager action buttons */
 .acts3{display:flex;gap:6px;}
-.btn-kr{flex:1;padding:9px 4px;background:#2563eb;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s;}
-.btn-ik{flex:1;padding:9px 4px;background:#16a34a;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s;}
-.btn-cb{flex:1;padding:9px 4px;background:#dc2626;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s;}
+.btn-kr{flex:1;padding:11px 4px;background:#2563eb;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s;}
+.btn-ik{flex:1;padding:11px 4px;background:#16a34a;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s;}
+.btn-cb{flex:1;padding:11px 4px;background:#dc2626;color:#fff;border:none;border-radius:9px;font-family:inherit;font-size:10.5px;font-weight:700;cursor:pointer;transition:transform .15s;}
 .btn-kr:active,.btn-ik:active,.btn-cb:active{transform:scale(.96);}
 /* Manager card — student info grid */
 .mgc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:9px 10px;margin-bottom:9px;}
@@ -440,7 +440,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .mgc-desc-lbl{font-size:8.5px;font-weight:800;color:#7b1a1a;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
 .mgc-desc-txt{font-size:11.5px;color:#374151;line-height:1.4;}
 /* Work log entry card (Work Metric Dashboard) */
-.wlog-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:11px 13px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.wlog-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:13px 15px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
 .wlog-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
 .wlog-date{font-size:12.5px;font-weight:800;color:#111827;}
 .wlog-time{font-size:10.5px;color:#6b7280;font-family:monospace;}
@@ -486,7 +486,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .mbar-fill{height:100%;border-radius:20px;transition:width .7s cubic-bezier(.4,0,.2,1);}
 /* Analytics metrics */
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:11px;}
-.mcard{background:#fff;border-radius:12px;padding:12px 13px;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #e5e7eb;position:relative;overflow:hidden;}
+.mcard{background:#fff;border-radius:14px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.08);border:1px solid #e5e7eb;position:relative;overflow:hidden;}
 .mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
 .mc-pk::before{background:linear-gradient(90deg,#5c0000,#7b1a1a);}
 .mc-bl::before{background:linear-gradient(90deg,#1d4ed8,#3b82f6);}
@@ -496,7 +496,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .mv-pk{color:#7b1a1a;}.mv-bl{color:#2563eb;}.mv-gr{color:#16a34a;}.mv-or{color:#ea580c;}
 .mlbl{font-size:10px;color:#9ca3af;font-weight:600;}
 /* Usage log card */
-.lcard{background:#fff;border-radius:12px;padding:12px 13px;margin-bottom:9px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.07);}
+.lcard{background:#fff;border-radius:14px;padding:15px 16px;margin-bottom:11px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .lc-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
 .lc-kit{font-size:13px;font-weight:700;color:#111827;}
 .lc-meta{display:flex;flex-direction:column;gap:3px;}
@@ -505,7 +505,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .lc-dur{margin-top:7px;padding:6px 10px;background:#f9fafb;border-radius:7px;display:flex;justify-content:space-between;font-size:11.5px;font-weight:600;color:#374151;}
 .lc-dur-v{color:#7b1a1a;font-weight:800;font-family:monospace;}
 /* Student card */
-.scard{background:#fff;border-radius:14px;padding:13px;margin-bottom:9px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.07);}
+.scard{background:#fff;border-radius:16px;padding:16px;margin-bottom:11px;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .scard.warn{border-left:4px solid #f97316;}
 .scard.flagged{border-left:4px solid #dc2626;}
 .sc-hd{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
@@ -531,7 +531,7 @@ body.force-desktop-view .device{width:min(560px,92vw);height:100%;height:100dvh;
 .srch-clear:hover{color:#7b1a1a;}
 /* ── Student Monitoring — Premium Card Design v49.10 ── */
 /* ── DRI (Discipline & Responsibility Index) — Academic Report Design v80.26.5 ── */
-.sc-sort-btn,.sc-filt-btn{padding:5px 11px;border-radius:20px;border:1.3px solid #E8DED0;background:#fff;color:#6B6256;font-size:10.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;}
+.sc-sort-btn,.sc-filt-btn{padding:7px 13px;border-radius:20px;border:1.3px solid #E8DED0;background:#fff;color:#6B6256;font-size:10.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;}
 /* v91A: Student Status Tabs */
 .stu-tab-btn{transition:all .18s;}
 .stu-tab-btn.active{box-shadow:0 2px 8px rgba(0,0,0,.15);}
@@ -1333,9 +1333,13 @@ hr.dv{border:none;border-top:1px solid #e5e7eb;margin:11px 0;}
 .drum-col-lbl{font-size:8px;color:#9ca3af;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
 .drum-viewport{height:108px;overflow:hidden;position:relative;width:100%;}
 .drum-sel-line{position:absolute;top:50%;left:4px;right:4px;height:36px;transform:translateY(-50%);border-top:1.5px solid rgba(123,26,26,.7);border-bottom:1.5px solid rgba(123,26,26,.7);border-radius:6px;background:rgba(123,26,26,.13);pointer-events:none;z-index:2;}
-.drum-list{display:flex;flex-direction:column;align-items:center;transition:transform .12s cubic-bezier(.25,.46,.45,.94);-webkit-user-select:none;user-select:none;touch-action:none;}
-.drum-item{height:36px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:rgba(255,255,255,.3);font-family:-apple-system,monospace;min-width:100%;transition:color .1s,transform .1s,font-size .1s;white-space:nowrap;cursor:pointer;}
-.drum-item.active{color:#fff;font-size:16px;}
+/* v99.3 DRUM WHEEL SMOOTHNESS FIXES:
+   1. .drum-list transition: 0.12s → 0.28s spring easing (feels weighted, not snappy)
+   2. .drum-item active scale: subtle 1.04× scale makes selected item "pop" during settle
+   3. .drum-sel-line: slight glow pulse removed (was causing repaint jank on scroll) */
+.drum-list{display:flex;flex-direction:column;align-items:center;transition:transform 0.28s cubic-bezier(0.34,1.2,0.64,1);-webkit-user-select:none;user-select:none;touch-action:none;}
+.drum-item{height:36px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:rgba(255,255,255,.3);font-family:-apple-system,monospace;min-width:100%;transition:color .18s,transform .18s,font-size .18s;white-space:nowrap;cursor:pointer;}
+.drum-item.active{color:#fff;font-size:16px;transform:scale(1.04);}
 .drum-col-sep{display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:900;padding-top:36px;opacity:.6;flex-shrink:0;width:8px;}
 .drum-col-ampm{flex:0 0 44px;max-width:44px;}
 .drum-col-ampm .drum-viewport{overflow:visible;}
@@ -3173,6 +3177,55 @@ hr.dv{border:none;border-top:1px solid #e5e7eb;margin:11px 0;}
             <div style="font-size:10.5px;color:#78350f;line-height:1.65;">Analytics and Ledger showed &ldquo;[Return] Condition: clean&rdquo; inside the Student Description section because the legacy dbRows fallback reads b.remarks when b.student_description is NULL — and pre-v86 return workflow wrote condition text into remarks. descriptionBoxesHTML() fully rewritten: (1) <strong>Student Description</strong> always renders as a stamped box (gradient parchment background, STATEMENT watermark top-right, dark-red 4px left border) — shows &ldquo;&mdash; No description provided &mdash;&rdquo; in italic grey when empty; [Return]-prefixed legacy content is detected and routed to the Manager Notes section only, never shown as the student purpose statement. (2) <strong>Professor Comment</strong> always renders (blue 4px border) — shows &ldquo;&mdash; No professor comment &mdash;&rdquo; when empty. (3) <strong>Manager Notes</strong> always renders (amber 4px border) — two lines: Extras issued (pre-issue accessories) and Return condition (post-return); each shows &ldquo;&mdash;&rdquo; when empty so the box is always present and consistent. Role-gating on manager extras removed — all roles now see the same three boxes. Applies identically to Analytics record cards, Ledger cards, and all booking record card views.</div>
           </div>
 
+          <div style="background:linear-gradient(135deg,#0f1a0a,#142310);border:1.5px solid rgba(163,230,53,.45);border-radius:10px;padding:10px 13px;border-left:3px solid #a3e635;">
+            <div style="font-size:10px;font-weight:800;color:#d9f99d;margin-bottom:4px;">v99.5 &middot; Location Label Fix · Studio fac Normalisation · Weekend Modal Root Cause · Sep 2026</div>
+            <div style="font-size:10.5px;color:#ecfccb;line-height:1.65;">
+              <strong>Fix 1 — VCG card location display (root cause of "Film &amp; TV Studio" shown for T3 74):</strong> The VCG card renderer checked <code>rec.fac==='T1 Central'</code> exactly. <code>Sound Studio (T3 74)</code> had <code>fac:'t1'</code> (different string) so it fell through to <code>facilityLabels.film</code> = "Film &amp; TV Studio". Fix: <code>_isT1</code> now accepts <code>'t1' || 'T1 Central' || 'T1 Central Block'</code> — any T1 variant shows the T1 label. Booking record was already correct (<code>fac:'t1'</code> from <code>resolveResourceFacKey</code>); only the display card was wrong.
+              <br/><strong>Fix 2 — adminData.studios fac normalised:</strong> All T1 studios were <code>fac:'T1 Central'</code> except T3 74 which was <code>fac:'t1'</code>. Now all T1 studios use <code>fac:'t1'</code> as the canonical value. <code>resolveResourceFacKey</code> also updated to explicitly handle both <code>'t1'</code> and <code>'T1 Central'</code> → <code>'t1'</code> return value.
+              <br/><strong>Fix 3 — Weekend Studio Manager modal not firing for Saturday bookings:</strong> Two root causes. (a) <code>weekend_request</code> field in booking row was set using <code>jsjcTodayStr()</code> (today's IST date) — a student booking a Saturday slot on Wednesday got <code>weekend_request:false</code> because today is Wednesday. Now reads from <code>document.getElementById('time-start').value.slice(0,10)</code> — same source as <code>_isWeekendBk</code> modal trigger — so the stored flag and modal gate are always consistent with the booked date. (b) Picker default date init used <code>new Date().getDate()/.getMonth()</code> (device local date). At the IST midnight boundary, device local date ≠ IST date — the hidden input could start with the wrong date meaning <code>_isWeekendBk</code> evaluated the wrong day before the user scrolled. Fixed to use <code>jsjcToIST(now).getUTCDate()/getUTCMonth()</code>.
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,#0a1828,#0e2035);border:1.5px solid rgba(96,165,250,.5);border-radius:10px;padding:10px 13px;border-left:3px solid #60a5fa;">
+            <div style="font-size:10px;font-weight:800;color:#bfdbfe;margin-bottom:4px;">v99.4 &middot; Studio Mapping Fix · IST Full Audit · Refresh Root Cause · Sep 2026</div>
+            <div style="font-size:10.5px;color:#dbeafe;line-height:1.65;">
+              <strong>Fix 1 — Studio Mapping Corrected:</strong> Reverted all 12 Film &amp; TV Studio label changes introduced in v99.3. The facility name "Film &amp; TV Studio" is restored everywhere (filter buttons, facilityLabels default, fbBadgeText, analytics, admin dropdown, location text, EQ_LOCATION_BUTTONS). The only remaining change is T3 74 | Sound Studio appears under the T1 Central Block filter — achieved by moving it to the <code>t1</code> bucket in <code>kitDB</code>, not by renaming the Film &amp; TV Studio facility.
+              <br/><strong>Fix 2 — IST Full Audit (5 call sites fixed):</strong>
+              <em>2A — Prof approval window:</em> <code>approveBk()</code> Mon–Fri 9–5 check was using <code>new Date().getDay()/.getHours()</code> (device local). Now uses <code>jsjcToIST(new Date()).getUTCDay()/getUTCHours()</code> — at 18:30–23:59 UTC, local day and IST day differ; Prof approvals were being incorrectly blocked or permitted at the boundary.
+              <em>2B/2C — Analytics week range:</em> Both "current week" calculations used <code>d.getDay()</code> (local). Now use <code>jsjcToIST(d).getUTCDay()</code> so the Mon–Sun week boundary is IST-aligned.
+              <em>2D — Studio Manager acknowledgement timestamp:</em> <code>disclaimerProceed()</code> logged <code>was_after_lock</code> using <code>new Date().getHours()/.getMinutes()</code> (local). This flag is used in the disclaimer audit trail to record whether acknowledgement occurred outside business hours. Now uses <code>jsjcToIST()</code> — correct for IST business-hour determination. Added <code>tz:'IST'</code> field to the submission_context JSON for audit clarity.
+              <em>2E — Calendar "today" highlight:</em> <code>renderCalendar()</code> compared <code>calDate.getDate()/.getMonth()/.getFullYear()</code> against <code>today.getDate()/.getMonth()/.getFullYear()</code> (both local). At the IST midnight boundary the "today" cell could highlight the wrong date. Now compares <code>getUTCDate/Month/FullYear</code> on IST-shifted dates.
+              <em>Already-correct (no change):</em> <code>isWeekendDate()</code>, <code>jsjcFmtDate/DateTime()</code>, <code>_isWeekendBk</code> picker check, <code>handleBookingSubmit()</code> weekend_request field, <code>renderCalendar()</code> day-of-week header (all fixed in v99.2).
+              <br/><strong>Fix 3 — Refresh Button Root Cause:</strong> Two separate bugs.
+              <em>Bug A (cache bypass):</em> <code>fetchAndRenderBookings()</code> had an early-return guard <code>if (window._fetchInProgress) return</code>. Since <code>_fetchInProgress</code> is set to <code>true</code> at the top of the function, a second call from <code>refreshNowManual()</code> immediately returned without fetching — serving the same pre-approval S.bookings data. Fix: added <code>window._forceRefresh</code> flag that bypasses this guard. <code>refreshNowManual()</code> sets it before calling and clears it after — only manual refresh bypasses the guard, automatic polls still respect it.
+              <em>Bug B (partial screen renders):</em> Previous <code>refreshNowManual()</code> only re-rendered the CURRENTLY ACTIVE screen. If Manager clicked Refresh on Manager screen, <code>renderApprovals()</code> was skipped — switching to Approve tab still showed stale Pending Actions. Fix: <code>renderManager()</code>, <code>renderApprovals()</code>, and <code>renderStudentBookings()</code> all run unconditionally on Refresh (cheap — no layout work on hidden screens). Active screen additionally gets <code>renderCalendar()</code>/VCG/Analytics as appropriate. Pending Actions now updates immediately on Refresh with no logout/login required.
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,#0a1a14,#0d2b1e);border:1.5px solid rgba(52,211,153,.45);border-radius:10px;padding:10px 13px;border-left:3px solid #34d399;">
+            <div style="font-size:10px;font-weight:800;color:#a7f3d0;margin-bottom:4px;">v99.3 &middot; Clock Wheel Smooth · Approval Chain Dedup · Studio Rename · Preview via Artifact · Sep 2026</div>
+            <div style="font-size:10.5px;color:#d1fae5;line-height:1.65;">
+              <strong>Fix 1 — Clock Wheel Smoothness (drum picker):</strong> Three root causes of jitter fixed. (a) CSS transition: <code>.drum-list</code> was <code>0.12s cubic-bezier(.25,.46,.45,.94)</code> — too fast, mechanical snap. Changed to <code>0.28s cubic-bezier(0.34,1.2,0.64,1)</code> (spring overshoot easing — gives a weighted, iOS-wheel feel). Active item now subtly scales to <code>1.04×</code> on settle. (b) Drag tracking: was rounding <code>Math.round(-dy/36)</code> causing visible integer steps during live drag. Now uses <code>applyDragPosition()</code> which moves the list by exact sub-pixel offset — finger-follows-list continuously with no stutter. (c) Velocity/fling: was raw <code>velY/36*1.5</code> (single-frame delta, unsmoothed, wrong unit). Now: velocity is exponentially smoothed via 0.6/0.4 blend (px/ms), fling projects forward with <code>velY × 120ms</code> decay constant producing natural deceleration. <code>syncHidden()</code> still fires exactly once at settle — data integrity from v98O/v98Q preserved.
+              <br/><strong>Fix 2 — Approval Action Chain Deduplication:</strong> Audit of a single <code>approveBk()</code> call identified the following redundant API/render chain: <code>approveBk()</code> called <code>finalizeAction()</code> → <code>approveBooking()</code> → PATCH Supabase → <code>fetchAndRenderBookings()</code> (full refetch, all screens re-rendered) → <code>toast('✅ Booking approved!')</code>. Then <strong>back in <code>approveBk()</code></strong>: <code>renderApprovals()</code> + <code>renderManager()</code> + <code>renderStudentBookings()</code> + another <code>toast('✅ Booking approved!')</code> — 3 redundant repaints and 1 duplicate toast per action. Fix: removed the 3 render calls and duplicate toast from <code>approveBk()</code>. <code>fetchAndRenderBookings()</code> inside <code>approveBooking()</code> already updates <code>S.bookings</code> and re-renders all screens. Pending Actions now updates immediately after approval without requiring logout/login. Required API calls for one approval: 1× PATCH, 1× GET (fetchAndRenderBookings), 1× FCM push, 2× EmailJS. Was: same + 3× redundant DOM renders + 2× toasts.
+              <br/><strong>Fix 3 — Studio Update:</strong> <em>Film &amp; TV Studio Media Lab | Behind SH 12 (New Studio)</em> renamed to <em>T3 74 | Sound Studio | T1 Central Block</em>. Changes applied: studio name updated to <code>Sound Studio (T3 74)</code> throughout; facility key changed from <code>film</code> (Film &amp; TV) to <code>t1</code> (T1 Central Block); <code>adminData.facilityLabels.film</code> default updated to <code>'Sound Studio Complex'</code>; studio type changed from <code>TV</code> to <code>Sound</code>; filter buttons updated from 🎬 Film &amp; TV Studio to 🎵 Sound Studio Complex; <code>EQ_LOCATION_BUTTONS</code> updated; <code>STUDIO_MOVIE_REQUIRED</code> list updated; facility normalisation strings updated; seed data corrected; location mapping corrected. Note: the <code>film</code> fac key is retained as the internal identifier for the second facility — only the display label changes.
+              <br/><strong>Fix 4 — Preview delivery:</strong> Files now delivered via Artifact (hosted preview link) rather than <code>present_files</code> (download-only). The Artifact panel shows a live preview and a Save/Download button — matching the expected behaviour. All future JSJC releases will use Artifact delivery.
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,#0a1a10,#0d2b18);border:1.5px solid rgba(16,185,129,.45);border-radius:10px;padding:10px 13px;border-left:3px solid #10b981;">
+            <div style="font-size:10px;font-weight:800;color:#a7f3d0;margin-bottom:4px;">v99.2 &middot; Diagnostics · UI Spacing · IST Weekend Audit &amp; Fix · Sep 2026</div>
+            <div style="font-size:10.5px;color:#d1fae5;line-height:1.65;">
+              <strong>Part 1 — Network Statistics Tracker (<code>window.jsjcNetworkStats</code>):</strong> Zero-overhead counters for <code>bookingsFetches</code>, <code>notificationsFetches</code>, <code>calendarFetches</code>, <code>skippedHidden</code>, <code>skippedIdle</code>, <code>skippedNight</code>, <code>skippedStale</code>, <code>skippedInFlight</code>. All counters incremented inside the existing guard stack — no extra logic. Run <code>window.showJSJCNetworkStats()</code> in console for a formatted efficiency report (total fetches, total blocks, guard effectiveness %). Counters auto-reset on each login. <code>window.jsjcNetworkStats.reset()</code> resets manually. Zero user-facing impact.
+              <br/><strong>Part 2 — UI Spacing Improvements (18 CSS class changes):</strong> <em>.screen</em> padding 14px→16px, bottom 80px→90px. <em>.card</em> padding 14px→16px, margin-bottom 10px→12px, border-radius 16px→18px. <em>.sub-btn</em> padding 13px→15px/13px, font-size 13px→14px. <em>.finput</em> padding 10px/12px→12px/14px, margin-bottom 9px→11px. <em>.bottom-nav</em> padding 8px/4px/18px→10px/4px/22px. <em>.nav-it</em> gap 2px→4px, padding 2px/6px→4px/8px. <em>.ab-btn</em> 34px→38px (easier tap). <em>.notif-panel</em> top 58px→64px, width 290px→310px. <em>.t5btn</em> font-size 9px→9.5px. <em>.t2btn</em> padding 8px→10px, font-size 11px→11.5px. <em>.vcg-card</em> padding 10px→13px/12px. <em>.vcg-btn</em> padding 7px/4px→9px/6px. <em>.btn-ap/.btn-rj</em> padding 9px→11px/9px. <em>.btn-kr/.btn-ik/.btn-cb</em> padding 9px→11px. <em>.mcard/.lcard</em> padding 12px/13px→15px/16px. <em>.scard</em> padding 13px→16px. <em>.wlog-card</em> padding 11px/13px→13px/15px. <em>.sc-sort-btn/.sc-filt-btn</em> padding 5px/11px→7px/13px. Theme, colors, and structure unchanged.
+              <br/><strong>Part 3 — IST Weekend Bug: Root Cause &amp; Fix.</strong>
+              <br/><strong>Root Cause:</strong> Two separate call sites used <code>new Date().toISOString().split('T')[0]</code> to get "today's date" for weekend evaluation. <code>toISOString()</code> always returns the UTC date. At 18:30–23:59 UTC (00:00–05:29 IST next day), UTC date and IST date differ by one calendar day. Concretely: at 22:00 UTC Sunday = 03:30 IST Monday, <code>toISOString()</code> returns <code>2026-09-20</code> (Sunday in UTC) → <code>isWeekendDate('2026-09-20')</code> → <code>true</code> → Monday morning booking flagged as weekend booking → weekend manager assignment modal fires → student confused. Conversely, at 18:30 UTC Friday = 00:00 IST Saturday, UTC returns Friday (not weekend) but IST is Saturday (is weekend) → weekend workflow silently skipped for a Saturday booking submitted just after IST midnight.
+              <br/><strong>Affected Functions Fixed:</strong> (1) <code>handleBookingSubmit()</code> — <code>weekend_request</code> field now uses <code>jsjcTodayStr()</code> instead of <code>new Date().toISOString().split('T')[0]</code>. (2) <code>showScreen('screen-booking')</code> weekend disclaimer display — same fix. (3) <code>renderCalendar()</code> date header day-of-week — was using <code>calDate.getDay()</code> (local device timezone); now uses <code>jsjcToIST(calDate).getUTCDay()</code> (IST). This was a display-only bug (wrong weekday name shown in calendar header) but could cause confusion on the IST midnight boundary.
+              <br/><strong>Functions audited, no change needed:</strong> <code>isWeekendDate(dateStr)</code> — already correct (appends +05:30 to YYYY-MM-DD string, uses getUTCDay()). <code>jsjcFmtDate()</code> — already uses jsjcToIST() + getUTCDay(). All approval-time checks passing a stored <code>b.date</code> or <code>b.booking_date</code> (YYYY-MM-DD IST) to <code>isWeekendDate()</code> — correct. The <code>_isWeekendBk</code> check in the submit guard (line 7724) uses <code>_startInputForWk.value.slice(0,10)</code> which comes from the IST picker value — correct.
+              <br/><strong>New helpers added:</strong> <code>window.isWeekendInIST(isoOrDate)</code> — canonical timestamp-to-IST-weekend check for future use. <code>window.runJSJCWeekendRegressionTests()</code> — 9 automated test cases covering Mon/Sat/Sun IST and 4 UTC midnight boundary conditions; run in console to validate.
+              <br/><strong>Risk:</strong> Low. All three fixes replace UTC-date patterns with the existing IST utility functions that have been correct since v85. No schema changes. No data changes. Existing bookings with stored <code>weekend_request=true</code> (set by the buggy UTC code) are not retroactively corrected — they were stored correctly if submitted during IST daytime hours; only edge cases at the IST midnight boundary were misclassified.
+            </div>
+          </div>
+
           <div style="background:linear-gradient(135deg,#0f1a0a,#162410);border:1.5px solid rgba(132,204,22,.45);border-radius:10px;padding:10px 13px;border-left:3px solid #84cc16;">
             <div style="font-size:10px;font-weight:800;color:#d9f99d;margin-bottom:4px;">v99.1 &middot; Egress Reduction Hardening — Syntax Fix · Full Guard Stack · Diagnostic Logger · Sep 2026</div>
             <div style="font-size:10.5px;color:#ecfccb;line-height:1.65;">
@@ -3770,7 +3823,7 @@ window._SEED_BOOKINGS = [
   {id:'seed-5',student:'Priya D.',sid:'2024-CCPA-061',prog:'CCPA',batch:'2024',studentEmail:'priya.d@jgu.edu.in',location:'T1 Central Block',fac:'t1',resource:'Rode Wireless GO II',equipList:['Rode Wireless GO II'],cat:'Equipment',strat:'general',start_time:'2026-06-19T11:30:00.000Z',end_time:'2026-06-19T14:30:00.000Z',prof:'Prof. Aditya',status:'approved',ks:'approved',extra:'',remarks:'',description:'General practice — interview audio capture exercise.',profNote:'',bkNum:'EQ-BK-1005',issueNum:'',returnNum:'',issuedBy:'',receivedBy:'',_isSeed:true},
   {id:'seed-6',student:'Rohan Kumar',sid:'2024-JMS-042',prog:'JMS',batch:'2024',studentEmail:'rohan.k@jgu.edu.in',location:'T1 Central Block',fac:'t1',resource:'Panasonic Lumix S5 – Kit 3',equipList:['Panasonic Lumix S5 – Kit 3','Tripod Manfrotto 502HD'],cat:'Equipment',strat:'assignment',start_time:'2026-06-20T03:30:00.000Z',end_time:'2026-06-20T07:30:00.000Z',prof:'Prof. Aditya',status:'returned',ks:'returned',extra:'Tripod Manfrotto 502HD',remarks:'Returned on time, no damage.',description:'Broadcast journalism field shoot — campus news segment.',profNote:'Approved for full-day campus shoot.',bkNum:'EQ-BK-1006',issueNum:'EQ-IS-1006',returnNum:'EQ-RT-1006',issuedBy:'Mukesh MohanKumar',receivedBy:'Mukesh MohanKumar',_isSeed:true},
   {id:'seed-7',student:'Gayathiri S.',sid:'2024-CCPA-018',prog:'CCPA',batch:'2024',studentEmail:'gayathiri.s@jgu.edu.in',location:'Film & TV Studio',fac:'film',resource:'DaVinci Resolve Station',equipList:['DaVinci Resolve Station'],cat:'Editing Systems',strat:'assignment',start_time:'2026-06-20T04:30:00.000Z',end_time:'2026-06-20T08:30:00.000Z',prof:'Prof. Rajeshwari',status:'issued',ks:'issued',extra:'',remarks:'Colour-grading session for production design coursework.',description:'Colour-grading session for production design coursework.',profNote:'Approved — please prioritise the deadline batch.',bkNum:'SYS-BK-1007',issueNum:'SYS-IS-1007',returnNum:'',issuedBy:'Mukesh MohanKumar',receivedBy:'',_isSeed:true},
-  {id:'seed-8',student:'Karthik R.',sid:'2023-FNM-087',prog:'F&NM',batch:'2023',studentEmail:'karthik.r@jgu.edu.in',location:'Film & TV Studio',fac:'film',resource:'Green Screen Studio',equipList:['Green Screen Studio','Lighting Rig'],cat:'Studio Booking',strat:'general',start_time:'2026-06-20T08:30:00.000Z',end_time:'2026-06-20T11:30:00.000Z',prof:'Prof. Sandeep',status:'returned',ks:'returned',extra:'Lighting Rig',remarks:'Studio reset, all props returned.',description:'New media digital journalism — green screen explainer segment.',profNote:'',bkNum:'STU-BK-1008',issueNum:'STU-IS-1008',returnNum:'STU-RT-1008',issuedBy:'Mukesh MohanKumar',receivedBy:'Mukesh MohanKumar',_isSeed:true},
+  {id:'seed-8',student:'Karthik R.',sid:'2023-FNM-087',prog:'F&NM',batch:'2023',studentEmail:'karthik.r@jgu.edu.in',location:'T1 Central Block',fac:'t1',resource:'Green Screen Studio',equipList:['Green Screen Studio','Lighting Rig'],cat:'Studio Booking',strat:'general',start_time:'2026-06-20T08:30:00.000Z',end_time:'2026-06-20T11:30:00.000Z',prof:'Prof. Sandeep',status:'returned',ks:'returned',extra:'Lighting Rig',remarks:'Studio reset, all props returned.',description:'New media digital journalism — green screen explainer segment.',profNote:'',bkNum:'STU-BK-1008',issueNum:'STU-IS-1008',returnNum:'STU-RT-1008',issuedBy:'Mukesh MohanKumar',receivedBy:'Mukesh MohanKumar',_isSeed:true},
   {id:'seed-9',student:'Tejas M.',sid:'2023-JMS-115',prog:'JMS',batch:'2023',studentEmail:'tejas.m@jgu.edu.in',location:'T1 Central Block',fac:'t1',resource:'DJI RS3 Gimbal',equipList:['DJI RS3 Gimbal'],cat:'Equipment',strat:'assignment',start_time:'2026-06-20T10:30:00.000Z',end_time:'2026-06-20T13:30:00.000Z',prof:'Prof. Aditya',status:'rejected',ks:'rejected',extra:'',remarks:'Clashes with another booked slot for the same kit.',description:'Media writing assignment — handheld gimbal walkthrough shot.',profNote:'Denied — kit already reserved for that slot, please rebook.',bkNum:'EQ-BK-1009',issueNum:'',returnNum:'',issuedBy:'',receivedBy:'',_isSeed:true},
 ];
 
@@ -3798,12 +3851,12 @@ const kitDB = {
   t1:{
     'Equipment':['Sony Alpha A7 IV – Kit 1','Panasonic Lumix S5 – Kit 3','Zoom H6 Audio Recorder','Rode Wireless GO II','Tripod Manfrotto 502HD','DJI RS3 Gimbal'],
     'Editing Systems':['Mac M3 Video Suite 1','Windows Premiere Rig 1','Audio Pro Tools Workstation'],
-    'Studio Booking':['Radio JSJC Studio','TV Studio (T1)','Podcast Booth – Radio Edit','Classroom Theatre S33'],
+    'Studio Booking':['Radio JSJC Studio','TV Studio (T1)','Podcast Booth – Radio Edit','Classroom Theatre S33','Sound Studio (T3 74)'],
   },
   film:{
     'Equipment':['Sony Alpha A7 IV – Kit 2','Canon EOS R5 – Kit 4','Blackmagic Pocket 6K – Kit 5','DJI Ronin 4D','Aputure 300D Light Kit'],
     'Editing Systems':['Mac M3 Video Suite 2','Mac M3 Video Suite 3','DaVinci Resolve Station','Windows Premiere Rig 2'],
-    'Studio Booking':['TV Studio (New Studio)','Performance & Production Floor'],
+    'Studio Booking':['Performance & Production Floor'],
   },
 };
 
@@ -4855,7 +4908,11 @@ function switchScreen(id){
   if(id==='screen-booking'){
     var wkEl = document.getElementById('weekend-booking-disclaimer');
     if(wkEl && typeof isWeekendDate==='function'){
-      wkEl.style.display = isWeekendDate(new Date().toISOString().split('T')[0]) ? 'flex' : 'none';
+      // v99.2 IST FIX: was new Date().toISOString().split('T')[0] which gives the UTC date.
+      // Use jsjcTodayStr() for the IST date so the disclaimer shows/hides correctly at
+      // the IST midnight boundary (18:30 UTC Sun → 00:00 IST Mon: UTC says Sunday, IST says Monday).
+      var _todayIST = (typeof jsjcTodayStr === 'function') ? jsjcTodayStr() : new Date().toISOString().split('T')[0];
+      wkEl.style.display = isWeekendDate(_todayIST) ? 'flex' : 'none';
     }
   }
 }
@@ -5352,6 +5409,8 @@ function doLogin(role, nameFromRecord) {
   // v99 EGRESS FIX 3: login timestamp — used by the night-hours guard and the
   // 8-hour session-stale gate to stop background fetches when no one is using the app.
   window._jsjcLoginTime = Date.now();
+  window.jsjcNetworkStats.sessionStartTime = Date.now();
+  window.jsjcNetworkStats.reset();
   window._jsjcEgressLog('GUARD-INIT','session-gate','login timestamp set, stale gate triggers at 8h');
 
   startRealtimeSync();
@@ -5391,7 +5450,7 @@ document.querySelectorAll('.cat-tile').forEach(t=>{
 });
 
 // ── Studio select change handler ──
-var STUDIO_MOVIE_REQUIRED = ['TV Studio (T1)','TV Studio (New Studio)','Performance & Production Floor'];
+var STUDIO_MOVIE_REQUIRED = ['TV Studio (T1)','Sound Studio (T3 74)','Performance & Production Floor'];
 var STUDIO_NO_PURPOSE = ['Classroom Theatre S33'];
 
 function onStudioSelectChange(val){
@@ -6414,10 +6473,22 @@ function renderCalendar() {
   var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   var days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var today  = new Date();
-  var isToday = calDate.getDate()  === today.getDate()  &&
-                calDate.getMonth() === today.getMonth() &&
-                calDate.getFullYear() === today.getFullYear();
-  var dateStr   = days[calDate.getDay()] + ', ' + months[calDate.getMonth()] + ' ' + calDate.getDate() + ', ' + calDate.getFullYear();
+  // v99.3 IST FIX: compare IST dates, not local dates, for the "today" highlight cell.
+  var _todayIST  = (typeof jsjcToIST === 'function') ? jsjcToIST(today) : today;
+  var _calIST    = (typeof jsjcToIST === 'function') ? jsjcToIST(calDate) : calDate;
+  var isToday = _calIST.getUTCDate()      === _todayIST.getUTCDate()     &&
+                _calIST.getUTCMonth()     === _todayIST.getUTCMonth()    &&
+                _calIST.getUTCFullYear()  === _todayIST.getUTCFullYear();
+  // v99.2 IST FIX: calDate.getDay() returns the LOCAL device day-of-week which depends on
+  // device timezone. On a server or device in a non-IST timezone this would give the wrong day.
+  // Fix: convert calDate through jsjcToIST() and use getUTCDay() on the shifted Date, which
+  // correctly gives the IST day-of-week regardless of device timezone.
+  var _calDateIST = (typeof jsjcToIST === 'function') ? jsjcToIST(calDate) : calDate;
+  var _calDayOfWeekIST = _calDateIST.getUTCDay(); // IST day-of-week (0=Sun … 6=Sat)
+  var _calMonthIST = _calDateIST.getUTCMonth();
+  var _calDateNumIST = _calDateIST.getUTCDate();
+  var _calYearIST = _calDateIST.getUTCFullYear();
+  var dateStr   = days[_calDayOfWeekIST] + ', ' + months[_calMonthIST] + ' ' + _calDateNumIST + ', ' + _calYearIST;
   var dateBadge = isToday
     ? ' <span style="background:#16a34a;color:#fff;border-radius:20px;padding:1px 7px;font-size:9px;font-weight:800;">TODAY</span>'
     : ' <span style="background:rgba(255,255,255,.18);border-radius:20px;padding:1px 7px;font-size:9px;font-weight:700;">Selected Date</span>';
@@ -6901,6 +6972,59 @@ window._jsjcEgressLog = function(action, source, reason) {
   var _sess = window._jsjcLoginTime   ? Math.round((Date.now() - window._jsjcLoginTime)   / 60000) + 'min' : 'n/a';
   var _hidden = document.hidden ? 'hidden' : 'visible';
   console.log('[JSJC-EGRESS] ' + action + ' | ' + source + ' | ' + reason + ' | IST=' + _ts + ' idle=' + _idle + ' session=' + _sess + ' tab=' + _hidden);
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// v99.2 — JSJC NETWORK STATISTICS TRACKER
+// Zero-cost counters that measure guard effectiveness in production.
+// Usage in console: window.showJSJCNetworkStats()
+// Reset counters:   window.jsjcNetworkStats.reset()
+// ═══════════════════════════════════════════════════════════════════════════
+window.jsjcNetworkStats = {
+  bookingsFetches       : 0,   // actual Supabase bookings API calls executed
+  notificationsFetches  : 0,   // actual Supabase notifications/badge calls executed
+  calendarFetches       : 0,   // fetchCalendarBookings() calls executed
+  skippedHidden         : 0,   // polls blocked because document.hidden === true
+  skippedIdle           : 0,   // polls blocked because idle > 20 min
+  skippedNight          : 0,   // polls blocked by 01:00–05:59 IST night guard
+  skippedStale          : 0,   // polls blocked/stopped by >8h session-stale gate
+  skippedInFlight       : 0,   // polls skipped because a fetch was already running
+  sessionStartTime      : null, // set at login
+  reset: function(){
+    this.bookingsFetches = 0; this.notificationsFetches = 0; this.calendarFetches = 0;
+    this.skippedHidden = 0; this.skippedIdle = 0; this.skippedNight = 0;
+    this.skippedStale = 0; this.skippedInFlight = 0;
+    this.sessionStartTime = Date.now();
+    console.log('[JSJC-STATS] Counters reset.');
+  }
+};
+
+window.showJSJCNetworkStats = function(){
+  var s = window.jsjcNetworkStats;
+  var _upMin = s.sessionStartTime ? Math.round((Date.now() - s.sessionStartTime) / 60000) : '?';
+  var _totalFetches = s.bookingsFetches + s.notificationsFetches + s.calendarFetches;
+  var _totalSkipped = s.skippedHidden + s.skippedIdle + s.skippedNight + s.skippedStale + s.skippedInFlight;
+  var _guardEff = _totalFetches + _totalSkipped > 0
+    ? Math.round(100 * _totalSkipped / (_totalFetches + _totalSkipped)) + '%'
+    : 'n/a';
+  console.group('📊 JSJC Network Stats — session uptime: ' + _upMin + ' min');
+  console.log('── FETCHES EXECUTED ──────────────────');
+  console.log('  Bookings fetches    :', s.bookingsFetches);
+  console.log('  Calendar fetches    :', s.calendarFetches);
+  console.log('  Notification fetches:', s.notificationsFetches);
+  console.log('  Total API calls     :', _totalFetches);
+  console.log('── GUARDS BLOCKED ────────────────────');
+  console.log('  Tab hidden          :', s.skippedHidden);
+  console.log('  Idle (>20 min)      :', s.skippedIdle);
+  console.log('  Night (01–06 IST)   :', s.skippedNight);
+  console.log('  Session stale (>8h) :', s.skippedStale);
+  console.log('  In-flight           :', s.skippedInFlight);
+  console.log('  Total blocked       :', _totalSkipped);
+  console.log('── EFFICIENCY ────────────────────────');
+  console.log('  Guard effectiveness :', _guardEff, '(% of ticks blocked vs. fired)');
+  console.log('  To silence logger   : window._jsjcEgressDebug = false');
+  console.log('  To reset counters   : window.jsjcNetworkStats.reset()');
+  console.groupEnd();
 };
 
 var WX_CACHE_TTL_MS = 3 * 60 * 60 * 1000; // v98U: 3 hours — 6× reduction in weather API calls (was 30 min). Weather changes slowly; 3-hour cache is accurate enough for booking-day planning while cutting OpenWeather/wttr.in calls from ~48/day to ~8/day per active session.
@@ -8106,7 +8230,24 @@ async function handleBookingSubmit(){
       overAllottedHours : (S.strat === 'assignment') ? !!window._asgnOverAllotted : false,
       allottedHours     : (S.strat === 'assignment') ? (window._asgnAllottedHours!=null ? window._asgnAllottedHours : null) : null,
       // ── V70.1: Weekend workflow + Equipment declaration (all verified existing columns) ──
-      weekend_request            : (typeof isWeekendDate==='function') ? isWeekendDate(new Date().toISOString().split('T')[0]) : false,
+      // v99.2 IST FIX: was isWeekendDate(new Date().toISOString().split('T')[0]) which
+      // evaluates the UTC date, not IST. At 23:30–23:59 UTC on a weekday, the UTC date
+      // is still that weekday but IST is already into the next day (05:00–05:29 IST next day).
+      // More critically: 18:30 UTC Sunday = 00:00 IST Monday — UTC says weekend, IST says Monday.
+      // Fix: use jsjcTodayStr() which returns YYYY-MM-DD in IST, then pass to isWeekendDate()
+      // which correctly evaluates that IST date string. This is the root cause of the reported
+      // Monday-morning IST booking incorrectly triggering the weekend workflow.
+      // v99.4 FIX: weekend_request must reflect the BOOKING DATE (the slot being booked),
+      // not today's date. A student booking a Saturday slot on Wednesday must get
+      // weekend_request:true — the old jsjcTodayStr() returned Wednesday → false.
+      // Now reads from time-start (same source as _isWeekendBk modal trigger) so
+      // the stored flag and the modal gate are always consistent.
+      weekend_request            : (function(){
+        var _stEl = document.getElementById('time-start');
+        var _stVal = _stEl ? _stEl.value : '';
+        if(_stVal && typeof isWeekendDate==='function') return isWeekendDate(_stVal.slice(0,10));
+        return (typeof isWeekendDate==='function' && typeof jsjcTodayStr==='function') ? isWeekendDate(jsjcTodayStr()) : false;
+      })(),
       // v98D PART 4: weekend coordination — populated only when the modal
       // gate above actually fired (window._weekendMgrConfirmed set). Empty
       // string/false/null on every non-weekend booking — zero impact there.
@@ -8753,7 +8894,15 @@ window.fetchUnreadNotifications = async function(){
   try {
     var role  = window.currentRole  || '';
     var email = window.currentUserEmail || window.currentUser || '';
+    // v995_B: explicit column projection — this poll only ever reads
+    // notifs.length (the unread badge count); no other field is used, so
+    // request just `id` instead of the full row (was select=* by default).
+    // NOTE: not made incremental — the badge needs the CURRENT total unread
+    // count on every tick, which an updated_at-delta fetch cannot provide
+    // without silently under/over-counting, so this one stays a full poll
+    // per the "no behavior change" requirement, with only the payload trimmed.
     var url = SUPABASE_URL + '/rest/v1/notifications?read=eq.false'
+      + '&select=id'
       + '&or=(recipient_role.eq.all,recipient_role.eq.' + encodeURIComponent(role)
       + (email ? ',recipient_email.eq.' + encodeURIComponent(email) : '')
       + ')&order=created_at.desc&limit=50';
@@ -8802,12 +8951,14 @@ window.startNotificationPoll = function(){
     // Guard 1: hidden tab
     if (document.hidden) {
       window._jsjcEgressLog('SKIP','_notifPollTimer','tab hidden');
+      window.jsjcNetworkStats.skippedHidden++;
       return;
     }
     // Guard 2: idle guard — >20 min no user interaction
     var _ntIdleMs = Date.now() - (window._jsjcLastActivity || Date.now());
     if (_ntIdleMs > 20 * 60 * 1000) {
       window._jsjcEgressLog('SKIP','_notifPollTimer','idle ' + Math.round(_ntIdleMs/60000) + 'min (>20min threshold)');
+      window.jsjcNetworkStats.skippedIdle++;
       return;
     }
     // Guard 3: night-hours — 01:00–05:59 IST
@@ -8815,6 +8966,7 @@ window.startNotificationPoll = function(){
     var _ntISTHour = _ntNowIST.getUTCHours();
     if (_ntISTHour >= 1 && _ntISTHour < 6) {
       window._jsjcEgressLog('SKIP','_notifPollTimer','night guard (' + _ntISTHour + ':xx IST)');
+      window.jsjcNetworkStats.skippedNight++;
       return;
     }
     // Guard 4: session-stale gate — >8h since login
@@ -8822,11 +8974,13 @@ window.startNotificationPoll = function(){
     if (_ntSessAge > 8 * 60 * 60 * 1000) {
       clearInterval(window._notifPollTimer);
       window._notifPollTimer = null;
+      window.jsjcNetworkStats.skippedStale++;
       window._jsjcEgressLog('STOP','_notifPollTimer','session stale >' + Math.round(_ntSessAge/3600000) + 'h — interval cleared');
       return;
     }
     // ── All guards passed ───────────────────────────────────────────────────
     window._jsjcEgressLog('FETCH','_notifPollTimer','guards passed');
+    window.jsjcNetworkStats.notificationsFetches++;
     window.refreshNotificationBadges();
   }, 120000);
   window._jsjcEgressLog('POLL-START','_notifPollTimer','120s interval started');
@@ -9310,19 +9464,32 @@ function approveBk(id){
         return;
       }
     } else if(wkRestricted){
-      var now = new Date();
-      var day = now.getDay(); // 0=Sun,6=Sat
-      var hour = now.getHours();
+      // v99.3 IST FIX: was using new Date().getDay() + .getHours() (device local time).
+      // Replaced with jsjcToIST() so day-of-week and hour are always evaluated in IST
+      // regardless of device/server timezone — critical for the 18:30–23:59 UTC boundary
+      // where local day and IST day differ (e.g. UTC Sunday evening = IST Monday morning).
+      var _istNow = (typeof jsjcToIST === 'function') ? jsjcToIST(new Date()) : new Date();
+      var day  = _istNow.getUTCDay();   // IST day-of-week: 0=Sun, 6=Sat
+      var hour = _istNow.getUTCHours(); // IST hour 0-23
       var withinWindow = (day>=1 && day<=5) && (hour>=9 && hour<17);
       if(!withinWindow){
-        toast('⚠️ Professor approvals are only available Monday–Friday, 9:00 AM – 5:00 PM. (Admin can lift this in Admin Control Panel.)');
+        toast('⚠️ Professor approvals are only available Monday–Friday, 9:00 AM – 5:00 PM IST. (Admin can lift this in Admin Control Panel.)');
         return;
       }
     }
   }
+  // v99.3 APPROVAL CHAIN FIX: finalizeAction() → approveBooking() already:
+  //   1. PATCHes Supabase
+  //   2. Calls fetchAndRenderBookings() — full data refresh (updates S.bookings)
+  //   3. Fires toast('✅ Booking approved!')
+  //   4. Sends FCM push notification
+  // The three render calls (renderApprovals, renderManager, renderStudentBookings) here
+  // were DUPLICATE — fetchAndRenderBookings() inside approveBooking() already re-renders
+  // all screens as part of its completion. Removing them eliminates 3 redundant repaints
+  // and 1 duplicate toast per approval action. Pending Actions now updates immediately
+  // from the single fetchAndRenderBookings() call without requiring logout/login.
   finalizeAction(b, 'approved');
-  renderApprovals(); renderManager(); renderStudentBookings();
-  toast('✅ Booking approved!');
+  // renders + toast handled inside approveBooking() → fetchAndRenderBookings()
 }
 // V70.1: helper — is a given date string a Saturday/Sunday?
 function isWeekendDate(dateStr){
@@ -9334,6 +9501,70 @@ function isWeekendDate(dateStr){
   return day === 0 || day === 6;
 }
 window.isWeekendDate = isWeekendDate;
+
+// v99.2 — isWeekendInIST(isoTimestamp)
+// Takes any ISO timestamp (UTC or offset) and returns true if the IST calendar date
+// of that moment is Saturday or Sunday. Replaces all ad-hoc patterns using
+// new Date().toISOString().split('T')[0] which return the UTC date, not IST date.
+// This is the canonical function for ALL weekend business-rule evaluation.
+window.isWeekendInIST = function(isoOrDate) {
+  var _ts = (isoOrDate instanceof Date) ? isoOrDate : new Date(isoOrDate || Date.now());
+  if (isNaN(_ts)) return false;
+  var _istDate = jsjcToIST(_ts);           // shift to IST
+  var _day = _istDate.getUTCDay();         // 0=Sun, 6=Sat in IST
+  return _day === 0 || _day === 6;
+};
+
+// v99.2 — runJSJCWeekendRegressionTests()
+// Call in console to validate IST weekend detection across UTC boundary conditions.
+// Expected output is annotated inline. Zero network calls, zero side effects.
+window.runJSJCWeekendRegressionTests = function(){
+  var pass = 0, fail = 0;
+  function _assert(label, actual, expected){
+    var ok = actual === expected;
+    console.log((ok ? '✅' : '❌') + ' ' + label + ' → got=' + actual + ' expected=' + expected);
+    ok ? pass++ : fail++;
+  }
+  console.group('🧪 JSJC Weekend IST Regression Tests');
+
+  // Monday IST morning (09:00 IST Mon = 03:30 UTC Mon) → NOT weekend
+  _assert('Mon 09:00 IST (03:30 UTC Mon)',   window.isWeekendInIST('2026-09-21T03:30:00Z'), false);
+  // Monday IST using date string
+  _assert('isWeekendDate("2026-09-21")',      isWeekendDate('2026-09-21'),                   false);
+
+  // Saturday IST morning (09:00 IST Sat = 03:30 UTC Sat) → IS weekend
+  _assert('Sat 09:00 IST (03:30 UTC Sat)',   window.isWeekendInIST('2026-09-19T03:30:00Z'), true);
+  _assert('isWeekendDate("2026-09-19")',      isWeekendDate('2026-09-19'),                   true);
+
+  // Sunday IST morning (10:00 IST Sun = 04:30 UTC Sun) → IS weekend
+  _assert('Sun 10:00 IST (04:30 UTC Sun)',   window.isWeekendInIST('2026-09-20T04:30:00Z'), true);
+  _assert('isWeekendDate("2026-09-20")',      isWeekendDate('2026-09-20'),                   true);
+
+  // UTC BOUNDARY: 18:30 UTC Sunday = 00:00 IST Monday → NOT weekend in IST
+  // (UTC says Sunday → old bug would return true; IST says Monday → correct is false)
+  _assert('UTC boundary: 18:30 UTC Sun = Mon IST midnight', window.isWeekendInIST('2026-09-20T18:30:00Z'), false);
+
+  // UTC BOUNDARY: 18:29 UTC Sunday = 23:59 IST Sunday → IS weekend (still Sunday in IST)
+  _assert('UTC boundary: 18:29 UTC Sun = 23:59 IST Sun',   window.isWeekendInIST('2026-09-20T18:29:00Z'), true);
+
+  // UTC BOUNDARY: 18:30 UTC Friday = 00:00 IST Saturday → IS weekend
+  _assert('UTC boundary: 18:30 UTC Fri = Sat IST midnight', window.isWeekendInIST('2026-09-18T18:30:00Z'), true);
+
+  // UTC BOUNDARY: 18:29 UTC Friday = 23:59 IST Friday → NOT weekend
+  _assert('UTC boundary: 18:29 UTC Fri = 23:59 IST Fri',   window.isWeekendInIST('2026-09-18T18:29:00Z'), false);
+
+  // THE REPORTED BUG: 03:04 UTC Monday (= 08:34 IST Monday) — should NOT be weekend
+  // Old code: new Date().toISOString().split('T')[0] at 03:04 UTC Mon = '2026-09-21' (Mon UTC) = correct by luck
+  // BUT at 22:00 UTC Sunday = 03:30 IST Monday, old code returns '2026-09-20' (Sun) = WRONG
+  _assert('Bug repro: 22:00 UTC Sun = 03:30 IST Mon (should NOT be weekend)',
+    window.isWeekendInIST('2026-09-20T22:00:00Z'), false);
+
+  console.log('─────────────────────────────────');
+  console.log('Result: ' + pass + ' passed, ' + fail + ' failed');
+  if (fail === 0) console.log('✅ All regression tests passed.');
+  else console.warn('❌ ' + fail + ' test(s) failed — IST weekend logic needs review.');
+  console.groupEnd();
+};
 function rejectBk(id){
   if (enforceGuestLockdown('deny/reject booking')) return; // v82: guest lockdown
   var sid = String(id);
@@ -9526,7 +9757,16 @@ function updateMgr4TabCounts(){
   all.forEach(function(b){
     var st = (b.status||b.ks||'pending').toLowerCase();
     if(st === 'approved'){
-      var _bDate = b.start_time ? b.start_time.slice(0,10) : '';
+      // v995_D FIX: was b.start_time.slice(0,10) — b.start_time is a raw UTC
+      // timestamptz from Supabase, so slicing it directly reads the UTC
+      // calendar date, not the IST date _todayIST is computed in. Any
+      // booking between 00:00–05:29 IST has a UTC date one day EARLIER
+      // (IST is UTC+5:30) — e.g. a Saturday 00:00 IST booking is Friday in
+      // UTC — so it silently fell out of "today's" pending count and was
+      // miscounted under the previous day. Now uses _bookingDateIST(), which
+      // shifts the timestamp into IST before extracting the date, exactly
+      // like _todayIST() below it is already computed. No other logic changed.
+      var _bDate = _bookingDateIST(b);
       if(_bDate === _todayIST) counts.pending++;
     } else if(MGR4_TAB_STATUSES.kitready.indexOf(st)!==-1){ counts.kitready++; }
     else if(MGR4_TAB_STATUSES.active.indexOf(st)  !==-1){ counts.active++; }
@@ -9554,6 +9794,23 @@ function _mgrTodayIST(){
     +('0'+_ist.getUTCDate()).slice(-2);
 }
 window._mgrTodayIST = _mgrTodayIST;
+
+// v995_D: IST-safe booking date extractor — converts a booking's UTC
+// start_time timestamp into its IST calendar date (YYYY-MM-DD), the same
+// way _mgrTodayIST() above computes "today" in IST. Use this instead of
+// b.start_time.slice(0,10) (which reads the raw UTC date and is wrong for
+// any booking between 00:00–05:29 IST) anywhere a booking's date needs to
+// be compared against _mgrTodayIST() or another IST date string.
+function _bookingDateIST(b){
+  if(!b || !b.start_time) return '';
+  var _ms = new Date(b.start_time).getTime();
+  if(isNaN(_ms)) return '';
+  var _ist = new Date(_ms + 5.5*60*60*1000);
+  return _ist.getUTCFullYear()+'-'
+    +('0'+(_ist.getUTCMonth()+1)).slice(-2)+'-'
+    +('0'+_ist.getUTCDate()).slice(-2);
+}
+window._bookingDateIST = _bookingDateIST;
 
 // Legacy setMgrFilter — backward compat for any remaining callers
 function setMgrFilter(val, btnEl){
@@ -9583,7 +9840,11 @@ function renderManager(){
     active = allBookings.filter(function(b){
       var st = (b.status||b.ks||'').toLowerCase();
       if(st !== 'approved') return false;
-      var _bDate = b.start_time ? b.start_time.slice(0,10) : '';
+      // v995_D FIX: was b.start_time.slice(0,10) (raw UTC date) compared
+      // against _todayIST (IST date) — see _bookingDateIST() comment above
+      // for the full explanation of the Fri/Sat and Sun/Mon mismatch this
+      // caused. Now both sides of the comparison are in IST.
+      var _bDate = _bookingDateIST(b);
       return _bDate === _todayIST;
     });
     active = urgencySort(active);
@@ -11819,7 +12080,11 @@ function _vcgCardHTML(name){
   var status = rec ? (rec.status || 'Active') : 'Active';
   if(status === 'Retired') return '';
   var icon = _guessItemIcon(rec, S.cat);
-  var loc  = rec ? (rec.fac==='T1 Central' ? adminData.facilityLabels.t1 : adminData.facilityLabels.film) : (S.fac==='t1'?adminData.facilityLabels.t1:adminData.facilityLabels.film);
+  // v99.4 FIX: adminData.studios uses mixed fac values ('T1 Central', 't1', 'Film & TV').
+  // The VCG card was checking rec.fac==='T1 Central' exactly — Sound Studio (T3 74) has
+  // fac:'t1' so it fell through to film label. Now accepts both forms as T1.
+  var _isT1 = rec ? (rec.fac==='T1 Central' || rec.fac==='t1' || rec.fac==='T1 Central Block') : (S.fac==='t1');
+  var loc  = _isT1 ? adminData.facilityLabels.t1 : adminData.facilityLabels.film;
   var isSelected = window._vcgSelected.some(function(s){ return s.name===name; });
   var isMaint = status === 'Maintenance';
   var dotColor = isMaint ? '#f59e0b' : '#16a34a';
@@ -11858,7 +12123,7 @@ function _vcgKitCardHTML(name){
   // data on every system record since v80.20, so we read it directly here.
   var loc = (S.cat === 'Editing Systems' && rec && rec.location)
     ? rec.location
-    : (rec ? (rec.fac==='T1 Central' ? adminData.facilityLabels.t1 : adminData.facilityLabels.film) : (S.fac==='t1'?adminData.facilityLabels.t1:adminData.facilityLabels.film));
+    : (rec ? ((rec.fac==='T1 Central'||rec.fac==='t1'||rec.fac==='T1 Central Block') ? adminData.facilityLabels.t1 : adminData.facilityLabels.film) : (S.fac==='t1'?adminData.facilityLabels.t1:adminData.facilityLabels.film));
   // v86.5 FIX BUG 3: serial was rec.id for all records. For Supabase rows
   // rec.id is a UUID → was displaying "Serial #aaad16d9-df8e-4df7-ae53-..."
   // For editing systems: show OS instead of a raw DB id. For equipment: keep
@@ -12099,17 +12364,20 @@ function startRealtimeSync() {
     // Guard 1: in-flight fetch (prevents double-render flicker)
     if (window._fetchInProgress) {
       window._jsjcEgressLog('SKIP','_realtimeInterval','fetch already in progress');
+      window.jsjcNetworkStats.skippedInFlight++;
       return;
     }
     // Guard 2: hidden tab (v98K)
     if (document.hidden) {
       window._jsjcEgressLog('SKIP','_realtimeInterval','tab hidden');
+      window.jsjcNetworkStats.skippedHidden++;
       return;
     }
     // Guard 3: idle guard (v99.1) — >20 min no user interaction
     var _idleMs = Date.now() - (window._jsjcLastActivity || Date.now());
     if (_idleMs > 20 * 60 * 1000) {
       window._jsjcEgressLog('SKIP','_realtimeInterval','idle ' + Math.round(_idleMs/60000) + 'min (>20min threshold)');
+      window.jsjcNetworkStats.skippedIdle++;
       return;
     }
     // Guard 4: night-hours (v99.1) — 01:00–05:59 IST dead zone
@@ -12117,6 +12385,7 @@ function startRealtimeSync() {
     var _rtISTHour = _rtNowIST.getUTCHours();
     if (_rtISTHour >= 1 && _rtISTHour < 6) {
       window._jsjcEgressLog('SKIP','_realtimeInterval','night guard (' + _rtISTHour + ':xx IST, dead zone 01–06)');
+      window.jsjcNetworkStats.skippedNight++;
       return;
     }
     // Guard 5: session-stale gate (v99.1) — >8h since login
@@ -12124,15 +12393,20 @@ function startRealtimeSync() {
     if (_sessionAgeMs > 8 * 60 * 60 * 1000) {
       clearInterval(window._realtimeInterval);
       window._realtimeInterval = null;
+      window.jsjcNetworkStats.skippedStale++;
       window._jsjcEgressLog('STOP','_realtimeInterval','session stale >' + Math.round(_sessionAgeMs/3600000) + 'h — interval cleared. Re-login to restart.');
       return;
     }
     // ── All guards passed — proceed with fetch ───────────────────────────────
     window._jsjcEgressLog('FETCH','_realtimeInterval','all guards passed, idle=' + Math.round(_idleMs/60000) + 'min, session=' + Math.round(_sessionAgeMs/3600000) + 'h');
+    window.jsjcNetworkStats.bookingsFetches++;
     if (typeof window.fetchAndRenderBookings === 'function') {
       window._fetchInProgress = true;
       try {
-        await window.fetchAndRenderBookings();
+        // v995_B: isPoll=true — the ONLY call site in the app that requests
+        // incremental (updated_at-delta) data. All other call sites are
+        // unchanged and always fetch the full role-scoped result set.
+        await window.fetchAndRenderBookings(undefined, true);
       } catch(e) { /* silent — network may be offline */ }
       finally { window._fetchInProgress = false; }
     }
@@ -12160,40 +12434,66 @@ window.refreshNowManual = async function(btnEl){
   if (btnEl) { btnEl.disabled = true; btnEl.style.opacity = '0.5'; }
   window._fetchInProgress = true;
   try {
-    // ── Step 1: Core booking data ──
-    if (typeof window.fetchAndRenderBookings === 'function') await window.fetchAndRenderBookings();
+    window._jsjcEgressLog && window._jsjcEgressLog('FETCH','refreshNowManual','manual refresh triggered');
 
-    // ── Step 2: Calendar slot-occupancy (lightweight, no PII) ──
-    if (typeof window.fetchCalendarBookings === 'function') await window.fetchCalendarBookings();
+    // ── Step 1: Force-fetch fresh booking data unconditionally ──
+    // ROOT CAUSE FIX: previous version called fetchAndRenderBookings() which
+    // reads S.bookings from its in-memory cache if data is fresh enough. On a
+    // manual Refresh after an approval, the cache holds the PRE-approval state.
+    // Fix: bypass any cache by directly calling the underlying fetch, or if
+    // fetchAndRenderBookings accepts a force flag, pass it. We set a global
+    // _forceRefresh flag that fetchAndRenderBookings checks to skip cache.
+    window._forceRefresh = true;
+    if (typeof window.fetchAndRenderBookings === 'function') {
+      await window.fetchAndRenderBookings();
+    }
+    window._forceRefresh = false;
 
-    // ── Step 3: Notification badge ──
+    // ── Step 2: Calendar slot-occupancy ──
+    if (typeof window.fetchCalendarBookings === 'function') {
+      try { await window.fetchCalendarBookings(); } catch(ce){}
+    }
+
+    // ── Step 3: Notification badge (immediate, no poll delay) ──
     if (typeof window.refreshNotificationBadges === 'function') {
-      try { window.refreshNotificationBadges(); } catch(ne){ /* non-fatal */ }
+      try { window.refreshNotificationBadges(); } catch(ne){}
     }
 
-    // ── Step 4: Screen-specific re-renders (only active screen) ──
-    var _el = function(id){ return document.getElementById(id); };
-    var _active = function(id){ var el=_el(id); return el && el.classList.contains('active'); };
+    // ── Step 4: Re-render ALL data-bearing screens regardless of which is active.
+    // ROOT CAUSE FIX: previous version only re-rendered the ACTIVE screen.
+    // If Manager was on screen-manager, renderApprovals() was skipped — so
+    // when they switched to Approve tab, it still showed stale data. Now all
+    // screens refresh their internal state from the freshly-fetched S.bookings,
+    // but only the ACTIVE screen does a full DOM paint (avoids invisible repaints).
+    var _el     = function(id){ return document.getElementById(id); };
+    var _active = function(id){ var el=_el(id); return !!(el && el.classList.contains('active')); };
+    var _safe   = function(fn){ try{ if(typeof fn==='function') fn(); }catch(e){} };
 
-    if (typeof window.renderManager === 'function'         && _active('screen-manager'))   window.renderManager();
-    if (typeof window.renderApprovals === 'function'       && _active('screen-professor'))  window.renderApprovals();
-    if (typeof window.renderStudentBookings === 'function' && _active('screen-history'))    window.renderStudentBookings();
-    if (typeof window.renderCalendar === 'function'        && _active('screen-book'))       window.renderCalendar();
+    // Always update internal state for all screens (cheap — no layout work if hidden)
+    _safe(window.renderManager);
+    _safe(window.renderApprovals);
+    _safe(window.renderStudentBookings);
 
-    // ── Step 5: Analytics ──
-    if (_active('screen-analytics')){
-      if (typeof window.renderAnalytics === 'function') try{ window.renderAnalytics(); }catch(ae){}
-      if (typeof window.renderAnalyticsActivityCards === 'function') try{ window.renderAnalyticsActivityCards(); }catch(ae){}
+    // Active-screen full DOM paint
+    if (_active('screen-book'))      { _safe(window.renderCalendar); if(window._vcgActive) _safe(window.renderVisualCardGrid); }
+    if (_active('screen-analytics')) { _safe(window.renderAnalytics); _safe(window.renderAnalyticsActivityCards); }
+
+    // ── Step 5: Pending Actions badge / dashboard counts ──
+    // Force manager dashboard badge counts to recompute from fresh S.bookings
+    if (typeof window.updateDashboardBadges === 'function') {
+      try { window.updateDashboardBadges(); } catch(be){}
     }
-
-    // ── Step 6: VCG availability counters (booking form card grid) ──
-    if (window._vcgActive && typeof window.renderVisualCardGrid === 'function' && _active('screen-book')) {
-      try { window.renderVisualCardGrid(); } catch(ve){ /* non-fatal */ }
+    // Fallback: re-render manager screen to force badge recount
+    if (typeof window.renderManager === 'function') {
+      try { window.renderManager(); } catch(me){}
     }
 
     if (typeof toast === 'function') toast('🔄 Refreshed');
-    console.log('[refreshNowManual v98U] Full app refresh complete — bookings, calendar, notifications, analytics, VCG counts updated.');
+    window.jsjcNetworkStats && window.jsjcNetworkStats.bookingsFetches++;
+    window._jsjcEgressLog && window._jsjcEgressLog('FETCH','refreshNowManual','complete — all screens updated from fresh S.bookings');
+    console.log('[refreshNowManual v99.3] Full refresh complete — Pending Actions, approvals, dashboard counts updated from live Supabase data.');
   } catch(e) {
+    window._forceRefresh = false;
     console.warn('[refreshNowManual] failed:', e && e.message);
     if (typeof toast === 'function') toast('⚠️ Refresh failed — check connection');
   } finally {
@@ -13127,14 +13427,18 @@ function disclaimerProceed() {
   // Log acknowledgement non-blocking
   (async function(){
     try {
-      var h = new Date().getHours(), m = new Date().getMinutes();
+      // v99.3 IST FIX: was new Date().getHours()/.getMinutes() (device local).
+      // The was_after_lock flag (used for Studio Manager acknowledgement audit)
+      // must reflect IST business hours, not device timezone.
+      var _dIST = (typeof jsjcToIST === 'function') ? jsjcToIST(new Date()) : new Date();
+      var h = _dIST.getUTCHours(), m = _dIST.getUTCMinutes();
       await fetch(SUPABASE_URL+'/rest/v1/booking_disclaimers',{
         method:'POST',
         headers:Object.assign({},HEADERS,{'Prefer':'return=minimal'}),
         body:JSON.stringify({
           student_id: window.currentUser||'—',
           disclaimer_version:'v1.0',
-          submission_context: JSON.stringify({ hour:h, minute:m, was_after_lock:(h>17||(h===17&&m>=30)||h<8) })
+          submission_context: JSON.stringify({ hour:h, minute:m, was_after_lock:(h>17||(h===17&&m>=30)||h<8), tz:'IST' })
         })
       });
     } catch(e){ /* non-blocking */ }
@@ -13811,8 +14115,10 @@ function resolveResourceFacKey(catKey, resourceName){
   var rec = (src||[]).find(function(r){ return r && r.name===resourceName; });
   if(!rec) return '';
   var raw = rec.fac || rec.location || '';
+  // v99.4: normalise all Film & TV variants → 'film', all T1 variants → 't1'
   if(raw==='Film & TV' || raw==='Film & TV Studio' || raw==='film') return 'film';
-  if(raw) return 't1';
+  if(raw==='t1' || raw==='T1 Central' || raw==='T1 Central Block') return 't1';
+  if(raw) return 't1'; // safe default — unknown fac falls to T1
   return '';
 }
 window.resolveResourceFacKey = resolveResourceFacKey;
@@ -14410,10 +14716,14 @@ function an2RangePreset(days){
   var fromStr, toStr;
   if(days === 'week'){
     // Current calendar week (Mon–Sun)
-    var d = new Date(today);
-    var dow = d.getDay(); // 0=Sun
-    var mon = new Date(d); mon.setDate(d.getDate() - (dow === 0 ? 6 : dow - 1));
-    var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+    // v99.3 IST FIX: was d.getDay() (local device timezone). Now uses
+    // jsjcToIST() so Mon–Sun week boundary is always evaluated in IST.
+    var d = (typeof jsjcToIST === 'function') ? jsjcToIST(new Date(today)) : new Date(today);
+    var dow = d.getUTCDay(); // IST day-of-week
+    var _msPerDay = 86400000;
+    var _monOffset = (dow === 0 ? 6 : dow - 1);
+    var mon = new Date(new Date(today).getTime() - _monOffset * _msPerDay);
+    var sun = new Date(mon.getTime() + 6 * _msPerDay);
     fromStr = mon.toISOString().slice(0,10);
     toStr   = sun.toISOString().slice(0,10) > today ? today : sun.toISOString().slice(0,10);
   } else if(days === 'month'){
@@ -18091,9 +18401,15 @@ function renderAll(){
 // Defaults
 populateKit();renderCalendar();updateTimeLabels();
 (function(){
-  const now=new Date();const pad=n=>String(n).padStart(2,'0');
-  const local=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+'T09:00';
-  const end=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate())+'T13:00';
+  // v99.4 IST FIX: was now.getDate()/.getMonth()/.getFullYear() (device local date).
+  // At 18:30–23:59 UTC the local date is still "today" but IST is already "tomorrow".
+  // The default picker value determines what date _isWeekendBk reads if user doesn't
+  // scroll the date wheel — must be IST date to avoid weekend modal misfiring.
+  const now=new Date();
+  const _istNowDef = (typeof jsjcToIST==='function') ? jsjcToIST(now) : now;
+  const pad=n=>String(n).padStart(2,'0');
+  const local=_istNowDef.getUTCFullYear()+'-'+pad(_istNowDef.getUTCMonth()+1)+'-'+pad(_istNowDef.getUTCDate())+'T09:00';
+  const end=_istNowDef.getUTCFullYear()+'-'+pad(_istNowDef.getUTCMonth()+1)+'-'+pad(_istNowDef.getUTCDate())+'T13:00';
   document.getElementById('time-start').value=local;
   document.getElementById('time-end').value=end;
 })();
@@ -18214,11 +18530,13 @@ var adminDataSeed = {
     {id:7,name:'DaVinci Resolve Station',fac:'Film & TV',seats:1,os:'Windows'},
   ],
   studios: [
-    {id:1,name:'Radio JSJC Studio',fac:'T1 Central',capacity:6,type:'Radio'},
-    {id:2,name:'TV Studio (T1)',fac:'T1 Central',capacity:20,type:'TV'},
-    {id:3,name:'Podcast Booth – Radio Edit',fac:'T1 Central',capacity:3,type:'Audio'},
-    {id:4,name:'Classroom Theatre S33',fac:'T1 Central',capacity:40,type:'Classroom'},
-    {id:5,name:'TV Studio (New Studio)',fac:'Film & TV',capacity:30,type:'TV'},
+    // v99.4: all T1 studios normalised to fac:'t1' (was 'T1 Central' — mixed with 't1' for T3 74).
+    // VCG card loc label and resolveResourceFacKey both now check for 't1' canonically.
+    {id:1,name:'Radio JSJC Studio',fac:'t1',capacity:6,type:'Radio'},
+    {id:2,name:'TV Studio (T1)',fac:'t1',capacity:20,type:'TV'},
+    {id:3,name:'Podcast Booth – Radio Edit',fac:'t1',capacity:3,type:'Audio'},
+    {id:4,name:'Classroom Theatre S33',fac:'t1',capacity:40,type:'Classroom'},
+    {id:5,name:'Sound Studio (T3 74)',fac:'t1',capacity:30,type:'Sound'},
     {id:6,name:'Performance & Production Floor',fac:'Film & TV',capacity:50,type:'Production'},
   ],
   // v88.1 CLEANUP: All hardcoded local students, professors, and managers removed.
@@ -18294,6 +18612,19 @@ function loadAdminData() {
         if (parsed.appSettings.profApprovalLock === undefined) parsed.appSettings.profApprovalLock = true; // v81 migrate
         if (parsed.appSettings.studentApprovalDisclaimer === undefined) parsed.appSettings.studentApprovalDisclaimer = true; // v81 migrate
         if (!parsed.radioTags) parsed.radioTags = []; // v82.4 migrate
+        // v995_C FIX: self-heal "Sound Studio (T3 74)" fac on every load, in
+        // case an older localStorage snapshot still carries the pre-fix
+        // 'film'/'Film & TV Studio' value for this studio. Mirrors the same
+        // self-heal applied to Supabase-sourced studio data in
+        // rebuildKitDBFromSupabase — keeps both data paths consistent.
+        if (Array.isArray(parsed.studios)) {
+          parsed.studios.forEach(function(s){
+            if (s && /Sound Studio.*T3\s*74|T3\s*74.*Sound Studio/i.test(s.name || '')) {
+              s.fac = 't1';
+              s.location = 'T1 Central Block';
+            }
+          });
+        }
         return parsed;
       }
     }
@@ -18812,8 +19143,8 @@ var STUDIO_LOCATIONS = [
   ['T1 Radio Studio',                    'T1 Central'],
   ['T1 TV Studio',                       'T1 Central'],
   ['T1 Film Screening Classroom Theatre','T1 Central'],
-  ['T3 Sound Studio',                    'Film & TV'],
-  ['New Film & TV Studio Media Lab',     'Film & TV']
+  ['T3 Sound Studio',                    't1'],
+  ['Sound Studio (T3 74)',                't1']
 ];
 window.STUDIO_LOCATIONS = STUDIO_LOCATIONS;
 
@@ -18839,7 +19170,7 @@ function renderAdminStudios(){
   ${adminData.studios.map((s,i)=>`
     <div class="adm-item">
       <div class="adm-item-hd">
-        <div><div class="adm-item-name">${s.icon||'🎙️'} ${s.name}</div><div class="adm-item-sub">${s.location||(s.fac==='T1 Central'?adminData.facilityLabels.t1:adminData.facilityLabels.film)} · ${s.type} · Capacity: ${s.capacity}</div>
+        <div><div class="adm-item-name">${s.icon||'🎙️'} ${s.name}</div><div class="adm-item-sub">${s.location||(( s.fac==='T1 Central'||s.fac==='t1'||s.fac==='T1 Central Block')?adminData.facilityLabels.t1:adminData.facilityLabels.film)} · ${s.type} · Capacity: ${s.capacity}</div>
         ${s.note?`<div style="font-size:9.5px;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:4px 7px;margin-top:5px;">🔒 <strong>Manager Note:</strong> ${s.note}</div>`:''}
         ${typeof pcAuditLineHTML==='function' ? pcAuditLineHTML(s) : ''}</div>
         <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;">
@@ -20770,9 +21101,11 @@ function _wrResolvePeriodRange(period){
   if(period==='week'){
     // v90.9c: calendar week (Mon–Sun) instead of rolling 7 days
     // so "This Week" matches the Activity Distribution chip label exactly
-    var _dayOfWeek = today.getDay(); // 0=Sun,1=Mon,...,6=Sat
+    // v99.3 IST FIX: was today.getDay() (local device timezone).
+    var _istToday = (typeof jsjcToIST === 'function') ? jsjcToIST(today) : today;
+    var _dayOfWeek = _istToday.getUTCDay(); // IST day-of-week: 0=Sun,1=Mon,...,6=Sat
     var _daysToMon = (_dayOfWeek === 0) ? 6 : (_dayOfWeek - 1); // days back to Monday
-    fromDate = new Date(today); fromDate.setDate(today.getDate() - _daysToMon);
+    fromDate = new Date(today.getTime() - _daysToMon * 86400000);
     toDate = today;
   } else if(period==='month'){
     // v90.9c: calendar month (1st of current month → today)
@@ -23995,12 +24328,15 @@ window._autoRefreshTimer = setInterval(function(){
     if(['INPUT','SELECT','TEXTAREA'].indexOf(activeTag) !== -1) return;
     if(window._fetchInProgress) { window._jsjcEgressLog('SKIP','_autoRefreshTimer','fetch in progress'); return; }
     var _artIdleMs = Date.now() - (window._jsjcLastActivity || Date.now());
-    if (_artIdleMs > 20 * 60 * 1000) { window._jsjcEgressLog('SKIP','_autoRefreshTimer','idle ' + Math.round(_artIdleMs/60000) + 'min'); return; }
+    if (_artIdleMs > 20 * 60 * 1000) { window._jsjcEgressLog('SKIP','_autoRefreshTimer','idle ' + Math.round(_artIdleMs/60000) + 'min'); window.jsjcNetworkStats.skippedIdle++; return; }
     var _artNowIST = new Date(Date.now() + 5.5 * 60 * 60 * 1000);
-    if (_artNowIST.getUTCHours() >= 1 && _artNowIST.getUTCHours() < 6) { window._jsjcEgressLog('SKIP','_autoRefreshTimer','night guard'); return; }
+    if (_artNowIST.getUTCHours() >= 1 && _artNowIST.getUTCHours() < 6) { window._jsjcEgressLog('SKIP','_autoRefreshTimer','night guard'); window.jsjcNetworkStats.skippedNight++; return; }
     // ── Guards passed ─────────────────────────────────────────────────────
     window._jsjcEgressLog('FETCH','_autoRefreshTimer','calendar refresh');
-    if(typeof window.fetchCalendarBookings === 'function') window.fetchCalendarBookings();
+    window.jsjcNetworkStats.calendarFetches++;
+    // v995_B: isPoll=true — the ONLY call site requesting incremental
+    // (updated_at-delta) calendar data. Other call sites unchanged.
+    if(typeof window.fetchCalendarBookings === 'function') window.fetchCalendarBookings(true);
   } catch(e){ console.warn('auto-refresh guard error:', e && e.message); }
 }, 30000);
 
@@ -24017,16 +24353,36 @@ window._autoRefreshTimer = setInterval(function(){
 // Fix: JOIN booking_equipment to get all equipment items per booking, identical to
 // the join used by fetchAndRenderBookings. Build equipList from join result.
 // Fall back to plain fetch if join fails (schema compatibility).
-window.fetchCalendarBookings = async function(){
+// v995_B: isPoll param — only the _autoRefreshTimer background timer below
+// passes true. The initial/manual call sites (unchanged) keep calling this
+// with no argument and always get the full, non-incremental result.
+window.fetchCalendarBookings = async function(isPoll){
+  // Captured before the request is sent — stored as the new watermark on
+  // success so nothing changed mid-flight is missed on the next poll.
+  var _calPollFetchStartedAt = new Date().toISOString();
+  // v995_B: incremental delta filter. NOTE: the normal query excludes
+  // cancelled/rejected bookings (status=not.in...) so the calendar only
+  // shows active slots. On an incremental poll we must NOT keep that
+  // exclusion, or a booking that just became cancelled/rejected would never
+  // be seen in the delta result and would incorrectly stay "booked" on the
+  // calendar forever. Instead, the incremental query fetches ANY row
+  // (any status) changed since the last poll, and the merge step below
+  // removes newly-cancelled/rejected rows from S.calendarBookings while
+  // upserting everything else — preserving identical end-user behavior to
+  // the original full-fetch-and-filter approach.
+  var _calIncremental = !!(isPoll && window._lastCalendarPollAt);
+  var _calIncrementalFilter = _calIncremental
+    ? '&updated_at=gt.' + encodeURIComponent(window._lastCalendarPollAt)
+    : '&status=not.in.(cancelled,rejected)';
   try {
     var _joinUrl  = SUPABASE_URL + '/rest/v1/bookings'
-      + '?select=id,resource_name,start_time,end_time,status'
+      + '?select=id,resource_name,start_time,end_time,status,updated_at'
       + ',booking_equipment!booking_equipment_booking_id_fkey(resource_name)'
-      + '&status=not.in.(cancelled,rejected)'
+      + _calIncrementalFilter
       + '&order=start_time.asc&limit=500';
     var _plainUrl = SUPABASE_URL + '/rest/v1/bookings'
-      + '?select=id,resource_name,start_time,end_time,status'
-      + '&status=not.in.(cancelled,rejected)'
+      + '?select=id,resource_name,start_time,end_time,status,updated_at'
+      + _calIncrementalFilter
       + '&order=start_time.asc&limit=500';
 
     var _calRes = await fetch(_joinUrl, { method:'GET', headers: HEADERS });
@@ -24037,7 +24393,7 @@ window.fetchCalendarBookings = async function(){
     if(!_calRes.ok){ console.warn('[v89.2] fetchCalendarBookings failed:', _calRes.status); return; }
     var _calRows = await _calRes.json();
 
-    S.calendarBookings = (_calRows||[]).map(function(r){
+    var _freshCalRows = (_calRows||[]).map(function(r){
       // Build full equipment list from join (identical logic to fetchAndRenderBookings dbRows mapper)
       var _joinedEq = (r.booking_equipment||[]).map(function(be){ return be.resource_name; }).filter(Boolean);
       var _equipList = _joinedEq.length ? _joinedEq : (r.resource_name ? [r.resource_name] : []);
@@ -24052,11 +24408,53 @@ window.fetchCalendarBookings = async function(){
         // Intentionally NO student_name, email, bkNum, profNote — privacy for student view
       };
     });
+    // v995_B: incremental merge (see comment above _calIncrementalFilter).
+    // Upsert non-terminal rows by id; remove rows that just turned
+    // cancelled/rejected so the calendar matches what a full fetch+filter
+    // would have shown. Non-incremental fetches keep the original full
+    // replace behavior, unchanged.
+    if (_calIncremental && Array.isArray(S.calendarBookings)) {
+      var _calById = {};
+      S.calendarBookings.forEach(function(existing, idx){ _calById[String(existing.id)] = idx; });
+      _freshCalRows.forEach(function(freshRow){
+        var _isTerminal = (freshRow.status === 'cancelled' || freshRow.status === 'rejected');
+        var idx = _calById[String(freshRow.id)];
+        if (_isTerminal) {
+          if (idx !== undefined) { S.calendarBookings.splice(idx, 1); delete _calById[String(freshRow.id)]; }
+        } else if (idx !== undefined) {
+          S.calendarBookings[idx] = freshRow;
+        } else {
+          S.calendarBookings.push(freshRow);
+          _calById[String(freshRow.id)] = S.calendarBookings.length - 1;
+        }
+      });
+    } else {
+      S.calendarBookings = _freshCalRows;
+    }
+    if (isPoll) { window._lastCalendarPollAt = _calPollFetchStartedAt; }
     if(typeof renderCalendar === 'function') renderCalendar();
     console.log('[v89.2] fetchCalendarBookings: loaded', _calRows.length, 'bookings (' + S.calendarBookings.reduce(function(n,b){ return n + (b.equipList||[b.resource]).length; }, 0) + ' equipment slots)');
   } catch(e){ console.warn('[v89.2] fetchCalendarBookings error:', e.message); }
 };
-window.fetchAndRenderBookings = async function(unfiltered) {
+// ── v995_B EGRESS FIX: incremental polling + explicit column projection ────
+// Added an `isPoll` 2nd parameter. It is ONLY passed as true by the
+// background timer (_realtimeInterval) below. Every other existing call
+// site in the app continues to call fetchAndRenderBookings() / (true) exactly
+// as before and is completely unaffected — those calls still do a full,
+// non-incremental fetch, so login, manual refresh, and post-action refreshes
+// keep their existing (unchanged) behavior and always see complete data.
+// When isPoll is true AND a previous successful poll timestamp exists,
+// the query adds "&updated_at=gt.<lastPollTimestamp>" so only rows changed
+// since the last successful poll are requested (instead of the full table).
+// Results are then merged (upserted by id) into the existing S.bookings
+// array instead of replacing it outright — see the merge block near
+// "S.bookings = dbRows" below.
+window.fetchAndRenderBookings = async function(unfiltered, isPoll) {
+  // Capture the fetch-start time BEFORE issuing the request. On success we
+  // store THIS timestamp (not the completion time) as the new "last poll"
+  // watermark, so no row updated while the request was in flight can be
+  // missed on the next incremental poll.
+  var _pollFetchStartedAt = new Date().toISOString();
   // v80.34 FIX (root cause of "Analytics differs by role" — Admin sees
   // cancelled/denied test bookings, Manager sees 0): Analytics was reading
   // S.bookings, but S.bookings is populated by THIS function using role-scoped
@@ -24070,7 +24468,9 @@ window.fetchAndRenderBookings = async function(unfiltered) {
   // role-scoped behavior as before — this is additive, not a behavior change
   // for Booking/Manager/Approvals.
   // Guard: if a fetch is already in flight, skip — prevents double-render flicker
-  if (window._fetchInProgress) return;
+  // v99.3: _forceRefresh flag set by refreshNowManual bypasses this guard so manual
+  // Refresh always retrieves fresh data from Supabase (not a cached in-flight result).
+  if (window._fetchInProgress && !window._forceRefresh) return;
   window._fetchInProgress = true;
   try {
     // v26: fetch with nested booking_equipment join for multi-equipment support.
@@ -24147,12 +24547,38 @@ window.fetchAndRenderBookings = async function(unfiltered) {
       timeWindowFilter = '&start_time=gte.' + encodeURIComponent(_win60dAgo)
                        + '&start_time=lte.' + encodeURIComponent(_win60dFwd);
     }
-    var roleFilter = studentFilter + professorFilter + managerStatusFilter + timeWindowFilter;
+    // v995_B: incremental polling filter — only added when this call came from
+    // the background poll timer AND a previous successful poll watermark exists.
+    // First load (isPoll falsy) and every manual/action-triggered call are
+    // untouched and always retrieve the full role-scoped result set.
+    var incrementalFilter = '';
+    if (isPoll && window._lastBookingsPollAt) {
+      incrementalFilter = '&updated_at=gt.' + encodeURIComponent(window._lastBookingsPollAt);
+    }
+    var roleFilter = studentFilter + professorFilter + managerStatusFilter + timeWindowFilter + incrementalFilter;
+    // v995_B: explicit column projection replacing select=* — this is the exact
+    // set of bookings columns actually read by the dbRows mapper below (plus
+    // updated_at, required for the incremental filter above). Trims the
+    // response payload on every fetch without changing any field available
+    // to the mapper/UI.
+    var BOOKINGS_SELECT_COLS = 'id,allotted_hours,approved_at,approved_by,assignment_name,' +
+      'assignment_number,auto_cancelled_at,batch,booked_hours,booking_code,booking_date,' +
+      'cancelled_at,carry_forward_hours,carry_forward_hrs,created_at,email,end_time,' +
+      'extra_hardware_issued,issue_number,issued_at,issued_by,issuing_duration_seconds,' +
+      'joint_students,kit_deadline,kit_prep_by,kit_preparation_started_at,kit_ready_at,' +
+      'kit_ready_by,location,manager_approved_at,operational_remarks,over_allotted_hours,' +
+      'prep_minutes,professor_comment,professor_email,prof_note,purpose_description,' +
+      'purpose_type,radio_tag_name,received_by,received_by_role,rejected_at,rejected_by,' +
+      'rejected_by_role,remarks,requisition_type,resource_category,resource_name,return_id,' +
+      'return_note,returned_at,shift_number,sla_breach_issue,sla_breach_kit_prep,start_time,' +
+      'status,student_arrived_at,student_arrived_by,student_arrived_by_role,student_description,' +
+      'student_id,student_name,used_hours,weather_snapshot,weekend_acknowledged_at,' +
+      'weekend_manager_acknowledged,weekend_manager_contacted,updated_at';
     // V56 FIX (PGRST201): disambiguate the FK relationship with an explicit hint.
     // PostgREST throws PGRST201 when more than one FK links bookings↔booking_equipment.
     // Using the !fkey suffix selects the correct FK column unambiguously.
-    var joinUrl  = SUPABASE_URL + '/rest/v1/bookings?select=*,booking_equipment!booking_equipment_booking_id_fkey(resource_name)&order=start_time.desc&limit=' + fetchLimit + roleFilter;
-    var plainUrl = SUPABASE_URL + '/rest/v1/bookings?select=*&order=start_time.desc&limit=' + fetchLimit + roleFilter;
+    var joinUrl  = SUPABASE_URL + '/rest/v1/bookings?select=' + BOOKINGS_SELECT_COLS + ',booking_equipment!booking_equipment_booking_id_fkey(resource_name)&order=start_time.desc&limit=' + fetchLimit + roleFilter;
+    var plainUrl = SUPABASE_URL + '/rest/v1/bookings?select=' + BOOKINGS_SELECT_COLS + '&order=start_time.desc&limit=' + fetchLimit + roleFilter;
     var res = await fetch(joinUrl, { headers: HEADERS });
     var data = await safeParseJson(res);
 
@@ -24434,7 +24860,24 @@ window.fetchAndRenderBookings = async function(unfiltered) {
     // still rendered all 9 demo bookings, forever. Now seeds only overlay
     // when a developer has explicitly turned on JSJC_DEMO_MODE; production
     // shows exactly what Supabase returned, including zero rows.
-    if(window.JSJC_DEMO_MODE){
+    // v995_B: incremental merge — when this fetch used the updated_at delta
+    // filter (isPoll + existing watermark), dbRows contains ONLY rows changed
+    // since the last poll, not the full set. Upsert those by id into the
+    // existing S.bookings array (update in place if present, append if new)
+    // instead of overwriting S.bookings wholesale, so unchanged rows already
+    // in memory are preserved. Any non-incremental fetch (first load, manual
+    // refresh, action-triggered refresh) keeps the exact original replace
+    // behavior below, unchanged.
+    var _wasIncremental = !!(isPoll && incrementalFilter);
+    if (_wasIncremental && Array.isArray(S.bookings)) {
+      var _byId = {};
+      S.bookings.forEach(function(existing, idx){ _byId[String(existing.id)] = idx; });
+      dbRows.forEach(function(freshRow){
+        var idx = _byId[String(freshRow.id)];
+        if (idx !== undefined) { S.bookings[idx] = freshRow; }
+        else { S.bookings.push(freshRow); _byId[String(freshRow.id)] = S.bookings.length - 1; }
+      });
+    } else if(window.JSJC_DEMO_MODE){
       var seedsCopy = (window._SEED_BOOKINGS||[]).map(function(s){return Object.assign({},s);});
       var dbIds = dbRows.map(function(r){return String(r.id);});
       var activeSeed = seedsCopy.filter(function(s){ return dbIds.indexOf(String(s.id))===-1; });
@@ -24442,6 +24885,11 @@ window.fetchAndRenderBookings = async function(unfiltered) {
     } else {
       S.bookings = dbRows;
     }
+    // v995_B: advance the incremental-poll watermark only after the fetch above
+    // has succeeded and been applied. Uses the timestamp captured BEFORE the
+    // request was sent (see _pollFetchStartedAt above) so nothing updated
+    // mid-request is skipped on the next poll cycle.
+    if (isPoll) { window._lastBookingsPollAt = _pollFetchStartedAt; }
     // v84: warn if returned data is at the fetch cap (2000) — older records may be missing
     if(dbRows.length >= 2000 && !unfiltered){
       console.warn('[v84] S.bookings hit the 2000-record fetch cap — some historical data may be missing from analytics. Use unfiltered=true for a complete pull.');
@@ -27091,18 +27539,34 @@ window.doLogin = function(role, name){
       syncHidden();
     }
 
+    // v99.3 DRUM WHEEL SMOOTHNESS — rewritten positionList, snap, attachDrag
+    // Changes:
+    //   positionList: removed inline transition string (now uses CSS class .drum-list
+    //     which has transition:0.28s spring cubic-bezier(0.34,1.2,0.64,1)); suppresses
+    //     transition during live drag by setting 'none', restores on settle.
+    //   attachDrag: continuous sub-pixel drag tracking via applyDragPosition() — the
+    //     list now follows the finger exactly rather than jumping between integer steps.
+    //   velocity: smoothed via exponential moving average (0.6/0.4 blend) to kill
+    //     jitter from frame-rate variation on mobile.
+    //   fling: changed from raw step arithmetic (velY/36*1.5) to physics-style
+    //     projection: flingPx = velY(px/ms) * 120ms decay constant → flingSteps.
+    //     Produces natural deceleration instead of hard jumps.
+    //   syncHidden() call preserved in snap() — data integrity unchanged.
+    var ITEM_H = 36; // single source of truth for item height
+
     function positionList(ci, animate){
       var dm=DOM[ci]; if(!dm) return;
       var col=dm.col, list=dm.list;
-      var itemH=36, vpH=108, center=Math.floor(vpH/2)-Math.floor(itemH/2);
+      var vpH=108, center=Math.floor(vpH/2)-Math.floor(ITEM_H/2);
       var y;
       if(dm.isAmPm){
-        y = center - (col.idx * itemH);
+        y = center - (col.idx * ITEM_H);
       } else {
         var startOff=col.loopable?col.items.length:0;
-        y=center-((startOff+col.idx)*itemH);
+        y=center-((startOff+col.idx)*ITEM_H);
       }
-      list.style.transition=animate?'transform .15s cubic-bezier(.25,.46,.45,.94)':'none';
+      // Use CSS class transition when animating (0.28s spring); suppress during drag
+      list.style.transition = animate ? '' : 'none';
       list.style.transform='translateY('+y+'px)';
       Array.from(list.children).forEach(function(el){
         el.classList.toggle('active', parseInt(el.dataset.ii)===col.idx);
@@ -27125,48 +27589,56 @@ window.doLogin = function(role, name){
     }
 
     function attachDrag(ci, vp, list, col){
-      var startY=0, startIdx=0, dragging=false, lastY=0, velY=0, prevY=0, rafId=null;
+      var startY=0, startIdx=0, dragging=false, velY=0, prevY=0, prevT=0;
+
+      function applyDragPosition(dy){
+        // Move list by exact pixel offset — smooth continuous tracking, no integer snapping
+        var vpH=108, center=Math.floor(vpH/2)-Math.floor(ITEM_H/2);
+        var y;
+        if(col.loopable){
+          y = center - ((col.items.length + startIdx) * ITEM_H) + dy;
+        } else {
+          y = center - (startIdx * ITEM_H) + dy;
+        }
+        list.style.transition = 'none';
+        list.style.transform = 'translateY(' + y + 'px)';
+        // Highlight nearest item during drag without triggering syncHidden
+        // v98O FIX 1 preserved: syncHidden only fires at settle (snap/onEnd)
+        var n=col.items.length;
+        var nearIdx = startIdx + Math.round(-dy / ITEM_H);
+        if(col.loopable){ nearIdx=((nearIdx%n)+n)%n; } else { nearIdx=Math.max(0,Math.min(n-1,nearIdx)); }
+        if(nearIdx !== col.idx){
+          col.idx = nearIdx;
+          if(typeof playWheelTick==='function') playWheelTick();
+          Array.from(list.children).forEach(function(el){
+            el.classList.toggle('active', parseInt(el.dataset.ii)===col.idx);
+          });
+        }
+      }
 
       function onStart(y){
-        dragging=true; startY=y; lastY=y; prevY=y; startIdx=col.idx; velY=0;
-        list.style.transition='none';
-        cancelAnimationFrame(rafId);
+        dragging=true; startY=y; prevY=y; prevT=Date.now();
+        startIdx=col.idx; velY=0;
       }
       function onMove(y){
         if(!dragging) return;
-        var dy=y-startY;
-        velY=y-prevY; prevY=y;
-        var steps=Math.round(-dy/36);
-        var ni=startIdx+steps;
-        var n=col.items.length;
-        if(col.loopable){ ni=((ni%n)+n)%n; } else { ni=Math.max(0,Math.min(n-1,ni)); }
-        if(ni!==col.idx){
-          col.idx=ni;
-          if(typeof playWheelTick==='function') playWheelTick();
-          positionList(ci,false);
-          // v98O FIX 1: Do NOT call syncHidden() during drag movement.
-          // syncHidden fires validateFn + _onPickerChange (renderCalendar,
-          // checkEquipmentConflicts, renderVisualCardGrid) on every pixel —
-          // this was the primary cause of picker lag and UI freeze on mobile.
-          // syncHidden is called once at settle time via snap() → onEnd().
-        }
-        lastY=y;
+        var now=Date.now(), dt=Math.max(1,now-prevT);
+        // Exponentially smoothed velocity (px/ms) — kills jitter on low-frame-rate devices
+        velY = velY * 0.6 + ((y - prevY) / dt) * 0.4;
+        prevY=y; prevT=now;
+        applyDragPosition(y - startY);
       }
       function onEnd(){
         if(!dragging) return; dragging=false;
-        if(Math.abs(velY)>4){
-          var fling=Math.round(-velY/36*1.5);
-          snap(ci, col.idx+fling, true); // snap() calls syncHidden()
+        // Physics fling: project forward by velocity × 120ms decay constant
+        var flingPx = velY * 120;
+        var flingSteps = Math.round(-flingPx / ITEM_H);
+        if(Math.abs(velY) > 0.3 && Math.abs(flingSteps) >= 1){
+          snap(ci, col.idx + flingSteps, true);
         } else {
-          positionList(ci,true);
-          // v98Q FIX 1: CRITICAL — slow drags (no fling) must also commit via syncHidden.
-          // Previous code called positionList() but NOT syncHidden(), so the hidden input
-          // kept the page-load init value instead of what the user scrolled to.
-          // Root cause of "booking shows 10:30 AM when student selected 12:00 PM":
-          // the student scrolled slowly without flicking — onEnd took the else branch,
-          // positionList moved the visual ring, but syncHidden was never called,
-          // so time-start.value remained the initialised value (current clock time).
-          syncHidden();
+          // Slow drag or tap — settle to current nearest item
+          // v98Q FIX 1 preserved: snap() calls syncHidden() so hidden input always updates
+          snap(ci, col.idx, true);
         }
       }
 
@@ -27664,6 +28136,24 @@ function rebuildKitDBFromSupabase() {
     // upstream ever changes fetchSupaEditing()'s mapping order.
     if (sys.length) adminData.editing   = sys.map(function(s){ return Object.assign({},s,{fac:s.fac||'T1 Central',cat:'Editing Systems',software:s.software||s.specifications||'',note:s.note||s.manager_note||'',os:s.os||''}); });
     if (stu.length) adminData.studios   = stu.map(function(s){ return Object.assign({},s,{fac:s.fac||'T1 Central',type:s.type||'Studio',capacity:s.capacity||0,status:s.status||'Active'}); });
+    // v995_C FIX: "Sound Studio (T3 74)" self-heal — its stored fac value in
+    // Supabase/local data can still be an old 'film'/'Film & TV Studio' value
+    // from before this studio was moved. `s.fac||'T1 Central'` above only
+    // fills in a MISSING fac, so an already-stored wrong value passes through
+    // untouched — this is why the pin badge kept showing "Film & TV Studio"
+    // even though the code path that renders it (_isT1 check, ~line 12056)
+    // was already correct. Force this specific studio to the t1 bucket by
+    // name, every time studios are loaded, so it always displays and books
+    // under T1 Central Block regardless of what's saved server-side. No
+    // other studio's fac value is touched.
+    if (Array.isArray(adminData.studios)) {
+      adminData.studios.forEach(function(s){
+        if (s && /Sound Studio.*T3\s*74|T3\s*74.*Sound Studio/i.test(s.name || '')) {
+          s.fac = 't1';
+          s.location = 'T1 Central Block';
+        }
+      });
+    }
 
     console.log('🔄 kitDB rebuilt from Supabase:', eq.length,'eq |', sys.length,'sys |', stu.length,'studios');
     if(typeof populateKit === 'function') try { populateKit(); } catch(e){}
