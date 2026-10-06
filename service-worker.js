@@ -1,93 +1,103 @@
-// ============================================================
-// service-worker.js — JSJC Smart Booking App v98 (N38)
-// Based on v97. Same structure and same update flow:
-//   - new SW installs and WAITS; index.html posts SKIP_WAITING, then reloads on controllerchange.
-// Changes from v97 (only these three):
-//   1. CACHE_NAME bumped to 'jsjc-app-v98' so browsers see a changed SW file and update.
-//   2. Page / manifest requests bypass the browser HTTP cache (cache:'no-store'), so a new
-//      GitHub Pages deploy is picked up immediately instead of after the ~10 min CDN cache.
-//   3. Only same-origin GET responses are cached; Supabase / API calls are never touched (unchanged rule, kept explicit).
-// ============================================================
+/* ============================================================================
+ * JSJC Smart Booking App — service-worker.js        (matches app builds V99 N29+)
+ * Registered by the app as:  navigator.serviceWorker.register('service-worker.js')
+ *
+ * What the app expects from this file (see the registration block near the end of the HTML):
+ *   - message {type:'SKIP_WAITING'}  -> activate immediately; the page then reloads once on 'controllerchange'
+ *   - it must NEVER serve a stale app page, and must NEVER touch Supabase / auth / API traffic
+ *
+ * Strategy
+ *   page loads (navigations) : NETWORK-FIRST, HTTP cache bypassed -> a new deploy is seen on the very next open;
+ *                              cached copy is used only when offline
+ *   same-origin files        : stale-while-revalidate (icons, manifest, favicon)
+ *   CDN scripts / fonts      : stale-while-revalidate (Chart.js etc. keep working offline)
+ *   everything else          : NOT intercepted (Supabase REST/RPC/auth, Firebase, POST/PATCH/DELETE, range requests)
+ *
+ * Push notifications are retired in N21+, so there is intentionally no 'push' handler.
+ * HOW TO DEPLOY: put this file in the SAME folder as the app HTML (same scope). Change VERSION below on every deploy
+ * if you want old caches purged immediately (freshness does not depend on it, because pages are network-first).
+ * ========================================================================== */
+const VERSION = 'v99-n29';
+const SHELL_CACHE   = 'jsjc-shell-'   + VERSION;
+const RUNTIME_CACHE = 'jsjc-runtime-' + VERSION;
+const KEEP = [SHELL_CACHE, RUNTIME_CACHE];
 
-const CACHE_NAME = 'jsjc-app-v98';
+// Best-effort: files that 404 are simply skipped.
+const PRECACHE = ['./', 'manifest.json', 'favicon.ico', 'icon-192.png', 'icon-512.png'];
 
-const PRECACHE_URLS = [
-  './',
-  './manifest.json'
-  // index.html itself is NOT pre-cached — it must always be fetched fresh.
-];
+const CDN_HOSTS = ['cdn.jsdelivr.net', 'cdnjs.cloudflare.com', 'cdn.tailwindcss.com', 'code.jquery.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
+const NEVER_PATHS = ['/rest/v1/', '/auth/v1/', '/storage/v1/', '/functions/v1/', '/realtime/v1/'];
 
-// ── Install: pre-cache shell assets ─────────────────────────
-self.addEventListener('install', function(event) {
-  console.log('[SW] Installing v98');
-  // No automatic skipWaiting() — the page requests it via SKIP_WAITING (same as v97).
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(PRECACHE_URLS);
-    }).catch(function(err) {
-      console.warn('[SW] Pre-cache failed (non-fatal):', err.message);
-    })
-  );
+/* ---- request classification (pure; unit-tested) ---- */
+function classify(req, selfOrigin) {
+  if (req.method !== 'GET') return 'skip';
+  var url; try { url = new URL(req.url); } catch (e) { return 'skip'; }
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return 'skip';
+  if (req.headers && req.headers.has && req.headers.has('range')) return 'skip';
+  for (var i = 0; i < NEVER_PATHS.length; i++) if (url.pathname.indexOf(NEVER_PATHS[i]) !== -1) return 'skip';
+  if (/(^|\.)supabase\.(co|in)$/.test(url.hostname)) return 'skip';
+  if (url.origin !== selfOrigin) return CDN_HOSTS.indexOf(url.hostname) !== -1 ? 'cdn' : 'skip';
+  if (req.mode === 'navigate' || (req.destination === 'document')) return 'navigate';
+  return 'static';
+}
+
+/* ---- lifecycle ---- */
+self.addEventListener('install', function (event) {
+  event.waitUntil((async function () {
+    const cache = await caches.open(SHELL_CACHE);
+    await Promise.all(PRECACHE.map(function (u) {
+      return cache.add(new Request(u, { cache: 'reload' })).catch(function () { /* missing optional file */ });
+    }));
+    // No automatic skipWaiting(): the page posts SKIP_WAITING when it is ready to switch (avoids reloading mid-booking).
+  })());
 });
 
-// ── Activate: remove old caches ──────────────────────────────
-self.addEventListener('activate', function(event) {
-  console.log('[SW] Activating v98');
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames
-          .filter(function(name) { return name !== CACHE_NAME; })
-          .map(function(name) {
-            console.log('[SW] Deleting old cache:', name);
-            return caches.delete(name);
-          })
-      );
-    }).then(function() {
-      return clients.claim();
-    })
-  );
+self.addEventListener('activate', function (event) {
+  event.waitUntil((async function () {
+    const names = await caches.keys();
+    await Promise.all(names.filter(function (n) { return KEEP.indexOf(n) === -1; }).map(function (n) { return caches.delete(n); })); // purge every older build
+    // Intentionally no clients.claim(): avoids a needless reload on the very first install.
+  })());
 });
 
-// ── Fetch: network-first strategy ────────────────────────────
-self.addEventListener('fetch', function(event) {
-  if (event.request.method !== 'GET') return;
-  var url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;   // Supabase, Firebase, CDNs: never intercepted
-
-  // Pages and manifest: skip the browser HTTP cache so new deployments show up at once.
-  var isShell = event.request.mode === 'navigate' ||
-                url.pathname.endsWith('.html') ||
-                url.pathname.endsWith('/') ||
-                url.pathname.endsWith('manifest.json');
-  var netReq = isShell ? new Request(event.request, { cache: 'no-store' }) : event.request;
-
-  event.respondWith(
-    fetch(netReq)
-      .then(function(response) {
-        if (response && response.status === 200) {
-          var responseClone = response.clone();
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(event.request, responseClone);
-          });
-        }
-        return response;
-      })
-      .catch(function() {
-        return caches.match(event.request).then(function(cached) {
-          if (cached) return cached;
-          if (event.request.mode === 'navigate') {
-            return caches.match('./');
-          }
-        });
-      })
-  );
-});
-
-// ── Message: SKIP_WAITING (unchanged from v97) ───────────────
-self.addEventListener('message', function(event) {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    console.log('[SW] Received SKIP_WAITING — activating new version');
-    self.skipWaiting();
+self.addEventListener('message', function (event) {
+  const d = event.data || {};
+  if (d.type === 'SKIP_WAITING') { self.skipWaiting(); return; }
+  if (d.type === 'GET_VERSION' && event.source) { event.source.postMessage({ type: 'VERSION', version: VERSION }); return; }
+  if (d.type === 'CLEAR_CACHES') {
+    event.waitUntil(caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); })
+      .then(function () { if (event.source) event.source.postMessage({ type: 'CACHES_CLEARED' }); }));
   }
+});
+
+/* ---- strategies ---- */
+async function networkFirst(req) {
+  const cache = await caches.open(SHELL_CACHE);
+  try {
+    const res = await fetch(req, { cache: 'no-store' });                 // bypass the browser HTTP cache: always the newest deploy
+    if (res && res.ok && res.type === 'basic') cache.put(req, res.clone());
+    return res;
+  } catch (err) {                                                         // offline
+    const hit = (await cache.match(req, { ignoreSearch: true })) || (await cache.match('./')) || (await cache.match('index.html'));
+    if (hit) return hit;
+    return new Response('<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><body style="font-family:sans-serif;padding:32px;text-align:center"><h2>You are offline</h2><p>JSJC Smart Booking needs a connection the first time. Reconnect and reload.</p>',
+      { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+  }
+}
+
+async function staleWhileRevalidate(req, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(req);
+  const refresh = fetch(req).then(function (res) {
+    if (res && (res.ok || res.type === 'opaque')) cache.put(req, res.clone());
+    return res;
+  }).catch(function () { return null; });
+  return cached || (await refresh) || new Response('', { status: 504, statusText: 'Offline' });
+}
+
+self.addEventListener('fetch', function (event) {
+  const kind = classify(event.request, self.location.origin);
+  if (kind === 'skip') return;                                            // let the browser handle it normally
+  if (kind === 'navigate') event.respondWith(networkFirst(event.request));
+  else event.respondWith(staleWhileRevalidate(event.request, kind === 'cdn' ? RUNTIME_CACHE : SHELL_CACHE));
 });
