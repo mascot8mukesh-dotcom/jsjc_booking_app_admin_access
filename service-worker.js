@@ -1,100 +1,41 @@
-// ============================================================
-// service-worker.js — JSJC Smart Booking App v97
-// v97 FIX ISSUE 1: Added SKIP_WAITING message handler so the
-// update handler in index.html can activate new SW immediately
-// on next page load without requiring manual hard-refresh.
-// ============================================================
+/* JSJC Smart Booking App — service-worker.js (N38)
+   Rules: the app shell (HTML, manifest, this file) is ALWAYS fetched from the network first, so a new deployment
+   is picked up on the next open. Supabase / API traffic is never touched. Old caches are deleted on activate. */
+const VERSION = 'N38';
+const CACHE   = 'jsjc-shell-' + VERSION;
+const OFFLINE_FALLBACK = ['./', './index.html', './manifest.json', './favicon.ico', './icon-192.png', './icon-512.png'];
 
-const CACHE_NAME = 'jsjc-app-v97';
+self.addEventListener('install', function(e){
+  self.skipWaiting();
+  e.waitUntil(caches.open(CACHE).then(function(c){
+    return Promise.all(OFFLINE_FALLBACK.map(function(u){ return c.add(new Request(u,{cache:'reload'})).catch(function(){}); }));
+  }));
+});
 
-// Files to cache for offline PWA functionality
-const PRECACHE_URLS = [
-  './',
-  './manifest.json'
-  // index.html itself is NOT pre-cached — it must always be fetched fresh
-  // from the server so SW updates are detected on every load.
-];
-
-// ── Install: pre-cache shell assets ─────────────────────────
-self.addEventListener('install', function(event) {
-  console.log('[SW] Installing v97');
-  // v97 FIX: Do NOT call skipWaiting() here automatically.
-  // We wait for the SKIP_WAITING message from index.html so the
-  // page can control WHEN the new SW activates (after prompting user or
-  // on next natural navigation). Calling skipWaiting() immediately on
-  // install can cause partial updates mid-session.
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(PRECACHE_URLS);
-    }).catch(function(err) {
-      console.warn('[SW] Pre-cache failed (non-fatal):', err.message);
-    })
+self.addEventListener('activate', function(e){
+  e.waitUntil(
+    caches.keys().then(function(keys){ return Promise.all(keys.filter(function(k){ return k !== CACHE; }).map(function(k){ return caches.delete(k); })); })
+      .then(function(){ return self.clients.claim(); })
   );
 });
 
-// ── Activate: remove old caches ──────────────────────────────
-self.addEventListener('activate', function(event) {
-  console.log('[SW] Activating v97');
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames
-          .filter(function(name) { return name !== CACHE_NAME; })
-          .map(function(name) {
-            console.log('[SW] Deleting old cache:', name);
-            return caches.delete(name);
-          })
-      );
-    }).then(function() {
-      // Take control of all open clients immediately after activation
-      return clients.claim();
-    })
-  );
-});
+self.addEventListener('message', function(e){ if(e.data && e.data.type === 'SKIP_WAITING') self.skipWaiting(); });
 
-// ── Fetch: network-first strategy ────────────────────────────
-// Always try the network first. On failure, serve from cache.
-// This ensures users always get the latest version when online,
-// while still being able to use the app offline.
-self.addEventListener('fetch', function(event) {
-  // Only handle GET requests; skip cross-origin requests
-  if (event.request.method !== 'GET') return;
-  var url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
-
-  event.respondWith(
-    fetch(event.request)
-      .then(function(response) {
-        // Cache successful responses for offline use
-        if (response && response.status === 200) {
-          var responseClone = response.clone();
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(event.request, responseClone);
-          });
-        }
-        return response;
-      })
-      .catch(function() {
-        // Network failed — try cache
-        return caches.match(event.request).then(function(cached) {
-          if (cached) return cached;
-          // Last resort: return a simple offline message for navigation requests
-          if (event.request.mode === 'navigate') {
-            return caches.match('./');
-          }
-        });
-      })
-  );
-});
-
-// ── Message: SKIP_WAITING ─────────────────────────────────────
-// v97 FIX ISSUE 1: The index.html update handler posts this message
-// when it detects a new SW in the 'installed'/'waiting' state.
-// We call skipWaiting() ONLY when explicitly requested — not automatically
-// on install — so mid-session disruption is avoided.
-self.addEventListener('message', function(event) {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    console.log('[SW] Received SKIP_WAITING — activating new version');
-    self.skipWaiting();
+self.addEventListener('fetch', function(e){
+  var req = e.request, url = new URL(req.url);
+  if(req.method !== 'GET' || url.origin !== self.location.origin) return;      // never touch Supabase / Firebase / CDNs / writes
+  var isShell = req.mode === 'navigate' || /\.(html|json)$/.test(url.pathname) || url.pathname.endsWith('/') || url.pathname.endsWith('service-worker.js');
+  if(isShell){
+    e.respondWith(
+      fetch(req, {cache:'no-store'}).then(function(res){
+        if(res && res.ok && req.mode === 'navigate'){ var copy = res.clone(); caches.open(CACHE).then(function(c){ c.put('./index.html', copy); }); }
+        return res;
+      }).catch(function(){ return caches.match(req).then(function(r){ return r || caches.match('./index.html'); }); })
+    );
+    return;
   }
+  e.respondWith(caches.match(req).then(function(hit){
+    var net = fetch(req).then(function(res){ if(res && res.ok){ var cp=res.clone(); caches.open(CACHE).then(function(c){ c.put(req,cp); }); } return res; }).catch(function(){ return hit; });
+    return hit || net;
+  }));
 });
